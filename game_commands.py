@@ -15,6 +15,7 @@ from db import (
     update_team_position,
 )
 from game_state import update_game_board
+from tiles import get_tile
 
 # ───────────────────────────── Dice roll lock ────────────────────────────────
 team_locks: dict[str, asyncio.Lock] = {}
@@ -69,11 +70,31 @@ async def roll_dice_command(inter: discord.Interaction):
 
     asyncio.create_task(update_game_board(inter.client))
 
-    return await inter.followup.send(
-        f"🎲 **{inter.user.display_name}** rolled a **{die}** for **{team['slug']}** "
-        f"→ now on tile **{new_pos}**\n"
-        f"(Use `/post` to post proof & `/complete` when you complete the tile.)"
+    role = inter.guild.get_role(team["role_id"])
+    tile_info = get_tile(new_pos)
+
+    team_colour = (
+        discord.Colour(team["color"]) if team.get("color") else discord.Colour.gold()
     )
+
+    embed = discord.Embed(
+        title=f"🎲 {inter.user.global_name} rolled a {str(die)}",
+        colour=team_colour,
+        timestamp=datetime.now(timezone.utc),  # shows “Today at …” in client
+    )
+
+    embed.add_field(name="**Team**", value=role.mention, inline=False)
+    embed.add_field(name="**Tile**", value=tile_info["id"], inline=False)
+    embed.add_field(
+        name="**Description**", value=tile_info["description"], inline=False
+    )
+
+    if url := tile_info.get("url"):
+        embed.add_field(name="More info", value=f"<{url}>", inline=False)
+
+    embed.set_footer(text="Use /post to upload proof, then /complete")
+
+    return await inter.followup.send(embed=embed)
 
 
 async def post_command(inter: discord.Interaction, proof: discord.Attachment):

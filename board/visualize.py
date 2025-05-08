@@ -19,7 +19,7 @@ def paint_team_circles(
     out_path: str = "assets/board_state.png",
     radius: int = 10,
     pad: int = 10,
-    shift: int = 7,
+    shift: int = 10,
 ) -> None:
     """
     Draw a dot per TEAM (not per player) on its current tile.

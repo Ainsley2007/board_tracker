@@ -106,7 +106,6 @@ DESIRED = {
 @bot.event
 async def on_ready():
     guilds = [g async for g in bot.fetch_guilds(limit=None)]
-    print(f"guilds: {guilds}")
     for g in guilds:
         await ensure_tile_race_channels(g)
     print(f"Logged in as {bot.user} ({bot.user.id})")
@@ -120,18 +119,16 @@ async def on_ready():
 
 
 async def ensure_tile_race_channels(guild: discord.Guild):
-    await guild.fetch_channels()
     ids = get_channel_ids()
 
-    # 1 ▸ category ------------------------------------------------------
-    category = await guild.fetch_channel(ids["category"])
+    cat_id = ids.get("category")
+    category = await guild.fetch_channel(cat_id) if cat_id else None
 
     if category is None:
         category = await guild.create_category(DESIRED["category"])
-    # always store the ID (may have been missing)
+
     set_meta("tr_category_id", category.id)
 
-    # 2 ▸ helper to get-or-create a channel -----------------------------
     async def need(name_key):
         chan = await guild.fetch_channel(ids[name_key]) if ids[name_key] else None
         if chan is None:
@@ -140,7 +137,6 @@ async def ensure_tile_race_channels(guild: discord.Guild):
                 category=category,
                 topic="OSRS Tile-Race" if name_key != "proofs" else "Screenshots only",
             )
-        # persist the ID in any case
         set_meta(f"tr_{name_key}_id", chan.id)
         return chan
 
@@ -148,8 +144,7 @@ async def ensure_tile_race_channels(guild: discord.Guild):
     proofs_chan = await need("proofs")
     cmd_chan = await need("cmd")
 
-    # 3 ▸ refresh the board --------------------------------------------
-    await update_game_board(bot)  # pass the client; helper pulls IDs
+    await update_game_board(bot)
 
 
 if __name__ == "__main__":

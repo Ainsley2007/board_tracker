@@ -34,7 +34,6 @@ def set_meta(key: str, value):
 
 def get_meta(key: str, default=None):
     row = meta.get(Q.key == key)
-    print(f"GET META RESULT FOR {key}: {row["value"]}")
     return row["value"] if row else default
 
 
@@ -67,12 +66,13 @@ def slugify(name: str) -> str:
     return name.lower().replace(" ", "_")
 
 
-def add_team(slug: str, role_id: int, role_colour: Colour):
+def add_team(name: str, slug: str, role_id: int, role_colour: Colour):
     if teams_table.contains(Q.slug == slug):
         raise ValueError("Team already exists")
     teams_table.insert(
         {
             "slug": slug,
+            "name": name,
             "role_id": int(role_id),
             "pos": 0,
             "color": role_colour.value,

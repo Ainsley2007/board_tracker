@@ -19,7 +19,7 @@ async def create_team_command(inter: discord.Interaction, name: str):
         reason="Tile‑race team",
         hoist=True,
     )
-    add_team(team_name, role.id, role_colour)
+    add_team(name, team_name, role.id, role_colour)
 
     await inter.response.send_message(
         f"Team **{role.mention}** created!",
