@@ -1,11 +1,13 @@
 from __future__ import annotations
+from datetime import datetime, timezone
 
 from discord import Colour
+import discord
 
 """TinyDB helper layer – slugs, inserts, and pre‑built query objects."""
 
 from pathlib import Path
-from typing import Any
+from typing import Any, List
 
 from tinydb import Query, TinyDB
 
@@ -13,17 +15,59 @@ from config import DB_PATH
 
 
 db = TinyDB(Path(DB_PATH))
+
 teams_table = db.table("teams")
 members_table = db.table("members")
+rolls_table = db.table("rolls")
+proofs_table = db.table("proofs")
+meta = db.table("meta")
 
 Q = Query()
+
+
+def set_meta(key: str, value):
+    if meta.contains(Q.key == key):
+        meta.update({"value": value}, Q.key == key)
+    else:
+        meta.insert({"key": key, "value": value})
+
+
+def get_meta(key: str, default=None):
+    row = meta.get(Q.key == key)
+    print(f"GET META RESULT FOR {key}: {row["value"]}")
+    return row["value"] if row else default
+
+
+def get_channel_ids():
+    return {
+        "category": get_meta("tr_category_id"),
+        "board": get_meta("tr_board_id"),
+        "proofs": get_meta("tr_proofs_id"),
+        "cmd": get_meta("tr_cmd_id"),
+    }
+
+
+def get_proofs_channel_id() -> int | None:
+    return get_meta("tr_proofs_id")
+
+
+def get_board_channel_id() -> int | None:
+    return get_meta("tr_board_id")
+
+
+def set_board_message_id(msg_id: int):
+    set_meta("tr_board_msg_id", msg_id)
+
+
+def get_board_message_id() -> int | None:
+    return get_meta("tr_board_msg_id")
 
 
 def slugify(name: str) -> str:
     return name.lower().replace(" ", "_")
 
 
-def add_team(slug: str, role_id: int, role_colour: Colour) -> None:
+def add_team(slug: str, role_id: int, role_colour: Colour):
     if teams_table.contains(Q.slug == slug):
         raise ValueError("Team already exists")
     teams_table.insert(
@@ -35,8 +79,6 @@ def add_team(slug: str, role_id: int, role_colour: Colour) -> None:
             "pending": False,
         }
     )
-
-    # ---------- teams & cascade delete --------------------------------------
 
 
 def remove_team(slug: str) -> tuple[int, int]:
@@ -50,8 +92,16 @@ def remove_team(slug: str) -> tuple[int, int]:
     return len(teams_removed), len(members_removed)
 
 
-def get_team(slug: str) -> dict[str, Any] | None:
+def get_team(slug: str):
     return teams_table.get(Q.slug == slug)
+
+
+def get_teams():
+    return {row["slug"]: row for row in teams_table.all()}
+
+
+def clear_pending_flag(slug: str):
+    return teams_table.update({"pending": False}, Q.slug == slug)
 
 
 def get_team_members(slug: str):
@@ -94,3 +144,63 @@ def update_team_position(position, team_name):
         {"pos": position, "pending": True},
         Q.slug == team_name,
     )
+
+
+def log_roll(
+    *,
+    team_slug: str,
+    user_id: int,
+    user_name: str,
+    die: int,
+    pos_before: int,
+    pos_after: int,
+):
+    rolls_table.insert(
+        {
+            "team_slug": team_slug,
+            "user_id": user_id,
+            "user_name": user_name,
+            "die": die,
+            "pos_before": pos_before,
+            "pos_after": pos_after,
+            "ts": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        }
+    )
+
+
+def last_roll(team_slug: str) -> dict | None:
+    rows = rolls_table.search(Q.team_slug == team_slug)
+    return max(rows, key=lambda r: r["ts"]) if rows else None
+
+
+def add_proof(
+    team_slug: str,
+    tile: int,
+    url: str,
+    user_id: int,
+    user_name: str,
+):
+    proofs_table.insert(
+        {
+            "team_slug": team_slug,
+            "tile": tile,
+            "url": url,
+            "user_id": user_id,
+            "user_name": user_name,
+            "ts": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        }
+    )
+
+
+def list_proof_urls(
+    team_slug: str,
+    tile: int,
+) -> List[str] | None:
+
+    query = (Q.team_slug == team_slug) & (Q.tile == tile)
+
+    rows = proofs_table.search(query)
+    rows.sort(key=lambda r: r["ts"])  # oldest → newest
+    urls = [r["url"] for r in rows]
+
+    return urls

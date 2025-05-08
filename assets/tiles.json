@@ -1,0 +1,552 @@
+{
+    "tiles": [
+        {
+            "id": 0,
+            "type": "START"
+        },
+        {
+            "id": 1,
+            "type": "TILE",
+            "name": "Imp beads",
+            "description": "Obtain 12 beads (3 Black, 3 White, 3 Red, 3 Yellow)"
+        },
+        {
+            "id": 2,
+            "type": "TILE",
+            "name": "Scurrius spines",
+            "description": "Obtain 3 scurrius spines from Scurrius"
+        },
+        {
+            "id": 3,
+            "type": "TILE",
+            "name": "Long bone",
+            "description": "Obtain a long bone from any monster"
+        },
+        {
+            "id": 4,
+            "type": "TILE",
+            "name": "Glacial temotli",
+            "description": "Obtain 3 pairs of Glacial temotli"
+        },
+        {
+            "id": 5,
+            "type": "TILE",
+            "name": "5 Easy clue scroll uniques",
+            "description": "Obtain 5 easy clue scroll uniques from the easy casket uniques table",
+            "url": "https://oldschool.runescape.wiki/w/Reward_casket_(easy)#Easy_clue_uniques"
+        },
+        {
+            "id": 6,
+            "type": "TILE",
+            "name": "Vorkath head",
+            "description": "Obtain 3 Vorkath heads from Vorkath"
+        },
+        {
+            "id": 7,
+            "type": "TILE",
+            "name": "Berserker ring",
+            "description": "Obtain 1 Berserker ring from Dagannoth Rex"
+        },
+        {
+            "id": 8,
+            "type": "TILE",
+            "name": "Wintertodt unique",
+            "description": "Obtain any wintertodt unique from the reward cart except for burnt pages",
+            "url": "https://oldschool.runescape.wiki/w/Reward_Cart#Unique"
+        },
+        {
+            "id": 9,
+            "type": "TILE",
+            "name": "Archers ring",
+            "description": "Obtain 1 Archers ring from Dagannoth Supreme"
+        },
+        {
+            "id": 10,
+            "type": "TILE",
+            "name": "Seers ring",
+            "description": "Obtain 1 Seers ring from Dagannoth Prime"
+        },
+        {
+            "id": 11,
+            "type": "TILE",
+            "name": "Barrows mismatched set",
+            "description": "Obtain 4 Barrows items (any Helm, any Body, any Legs, any Weapon)"
+        },
+        {
+            "id": 12,
+            "type": "TILE",
+            "name": "Tome of earth",
+            "description": "Obtain a Tome of earth from The HueyCoatl"
+        },
+        {
+            "id": 13,
+            "type": "TILE",
+            "name": "4 Moons items",
+            "description": "Obtain any 4 moons items from the lunar chest"
+        },
+        {
+            "id": 14,
+            "type": "TILE",
+            "name": "Mask of ranul",
+            "description": "Obtain a Mask of Ranul from the Undead Druids"
+        },
+        {
+            "id": 15,
+            "type": "TILE",
+            "name": "Sarachnis cudgel",
+            "description": "Obtain a Sarachnis cudgel from Sarachnis"
+        },
+        {
+            "id": 16,
+            "type": "TILE",
+            "name": "Zombie axe",
+            "description": "Obtain a Zombie axe from the Armoured zombies"
+        },
+        {
+            "id": 17,
+            "type": "CHALLENGE",
+            "name": "Can't Touch me",
+            "description": "Kill Dharok, Verac, Torag and Guthan without letting them attack you with melee."
+        },
+        {
+            "id": 18,
+            "type": "TILE",
+            "name": "Easy Clue scroll wizard unique",
+            "description": "Obtain any trimmed Wizard robes piece from an easy clue casket (black or blue (g))",
+            "url": "https://oldschool.runescape.wiki/w/Reward_casket_(easy)#Easy_clue_uniques"
+        },
+        {
+            "id": 19,
+            "type": "TILE",
+            "name": "Twinflame staff",
+            "description": "Obtain both Twinflame staff pieces (You don't have to combine them)"
+        },
+        {
+            "id": 20,
+            "type": "SKIP",
+            "destination_id": 26
+        },
+        {
+            "id": 21,
+            "type": "TILE",
+            "name": "Dragon hunter wand",
+            "description": "Obtain a Dragon hunter wand from The Hueycoatl"
+        },
+        {
+            "id": 22,
+            "type": "TILE",
+            "name": "Fire capes",
+            "description": "Obtain one fire cape per teammate"
+        },
+        {
+            "id": 23,
+            "type": "TILE",
+            "name": "Tempoross unique",
+            "description": "Obtain any Tempoross unique except for Spirit flakes, a casket or Soaked pages"
+        },
+        {
+            "id": 24,
+            "type": "RETURN",
+            "destination_id": 17
+        },
+        {
+            "id": 25,
+            "type": "TILE",
+            "name": "Medium Scroll uniques",
+            "description": "Obtain 4 medium clue scroll uniques from the medium casket uniques table",
+            "url": "https://oldschool.runescape.wiki/w/Reward_casket_(medium)#Medium_clue_uniques"
+        },
+        {
+            "id": 26,
+            "type": "TILE",
+            "name": "Zalcano unique",
+            "description": "Obtain any Zalcano unique item",
+            "url": "https://oldschool.runescape.wiki/w/Zalcano#Tertiary"
+        },
+        {
+            "id": 27,
+            "type": "TILE",
+            "name": "Elder chaos robes",
+            "description": "Obtain any piece of Elder robe"
+        },
+        {
+            "id": 28,
+            "type": "TILE",
+            "name": "Abyssal dye",
+            "description": "Obtain any Guardians of the Rift dye"
+        },
+        {
+            "id": 29,
+            "type": "TILE",
+            "name": "Zenyte",
+            "description": "Obtain a Zenyte shard"
+        },
+        {
+            "id": 30,
+            "type": "TILE",
+            "name": "Tzhaar weapon or armour",
+            "description": "Obtain any Tzhaar weapon or armour from a TzHaar-Ket",
+            "url": "https://oldschool.runescape.wiki/w/TzHaar-Ket#Weapons_and_armour_2"
+        },
+        {
+            "id": 31,
+            "type": "TILE",
+            "name": "Dragon chainbody",
+            "description": "Obtain a Dragon chainbody",
+            "url": "https://oldschool.runescape.wiki/w/Dragon_chainbody#Item_sources"
+        },
+        {
+            "id": 32,
+            "type": "TILE",
+            "name": "Dragon limbs",
+            "description": "Obtain Dragon limbs from metal dragons",
+            "url": "https://oldschool.runescape.wiki/w/Dragon_limbs#Item_sources"
+        },
+        {
+            "id": 33,
+            "type": "TILE",
+            "name": "Tombs of Amascut",
+            "description": "Obtain any TOA purple"
+        },
+        {
+            "id": 34,
+            "type": "TILE",
+            "name": "Zulrah",
+            "description": "Obtain any Zulrah unique"
+        },
+        {
+            "id": 35,
+            "type": "TILE",
+            "name": "3 hard clue uniques",
+            "description": "Obtain 3 hard clue scroll uniques from the hard casket uniques table",
+            "url": "https://oldschool.runescape.wiki/w/Reward_casket_(hard)#Hard_clue_uniques"
+        },
+        {
+            "id": 36,
+            "type": "TILE",
+            "name": "Chambers of Xeric",
+            "description": "Obtain any COX purple"
+        },
+        {
+            "id": 37,
+            "type": "TILE",
+            "name": "Bandos hilt",
+            "description": "Obtain a Bandos hilt from General Graardor"
+        },
+        {
+            "id": 38,
+            "type": "TILE",
+            "name": "Quartz collection",
+            "description": "Obtain all 4 Quartz from Desert Treasure II"
+        },
+        {
+            "id": 39,
+            "type": "TILE",
+            "name": "Theatre of Blood",
+            "description": "Obtain any TOB purple"
+        },
+        {
+            "id": 40,
+            "type": "CHALLENGE",
+            "name": "Egniol Diet II",
+            "description": "Kill the Corrupted Hunllef without making an egniol potion within the Corrupted Gauntlet."
+        },
+        {
+            "id": 41,
+            "type": "TILE",
+            "name": "Tormented synapse",
+            "description": "Obtain a Tormented synapse from Tormented demons"
+        },
+        {
+            "id": 42,
+            "type": "SKIP",
+            "destination_id": 47
+        },
+        {
+            "id": 43,
+            "type": "TILE",
+            "name": "Venator bow",
+            "description": "Obtain 5 Venator shards (Don't have to make the bow)"
+        },
+        {
+            "id": 44,
+            "type": "TILE",
+            "name": "Voidwaker blade",
+            "description": "Obtain a Voidwaker blade from either Calvar'ion or Vet'ion"
+        },
+        {
+            "id": 45,
+            "type": "TILE",
+            "name": "Armadyl hilt",
+            "description": "Obtain an Armadyl hilt from Kree'arra"
+        },
+        {
+            "id": 46,
+            "type": "RETURN",
+            "destination_id": 40
+        },
+        {
+            "id": 47,
+            "type": "TILE",
+            "name": "Zamorak hilt",
+            "description": "Obtain a Zamorak hilt from K'ril Tsutsaroth"
+        },
+        {
+            "id": 48,
+            "type": "TILE",
+            "name": "Medium Boots",
+            "description": "Obtain any pair of boots from a medium clue casket (Ranger boots, Wizard boots, Holy sandals, Spiked manacles, Climbing boots (g))"
+        },
+        {
+            "id": 49,
+            "type": "TILE",
+            "name": "Voidwaker gem",
+            "description": "Obtain a Voidwaker gem from either Spindel or Venenatis"
+        },
+        {
+            "id": 50,
+            "type": "TILE",
+            "name": "Enhanced or armour seeds",
+            "description": "Obtain an Enhanced crystal weapon seed or 5 Crystal armour seeds from The (corrupted) Gauntlet"
+        },
+        {
+            "id": 51,
+            "type": "TILE",
+            "name": "Tombs of Amascut",
+            "description": "Obtain any TOA weapon or shield (Fang, Shadow, Ward)"
+        },
+        {
+            "id": 52,
+            "type": "TILE",
+            "name": "Chambers of Xeric",
+            "description": "Obtain any COX weapon or shield (Buckler, DHC, Dinny B, Elder maul, Tbow, Claws, Kodai)"
+        },
+        {
+            "id": 53,
+            "type": "TILE",
+            "name": "Bellator vestige",
+            "description": "Obtain a Bellator vestige from the Whisperer"
+        },
+        {
+            "id": 54,
+            "type": "TILE",
+            "name": "Nex",
+            "description": "Obtain any unique from Nex"
+        },
+        {
+            "id": 55,
+            "type": "TILE",
+            "name": "The Nightmare",
+            "description": "Obtain any unique from The (Phosani's) Nightmare"
+        },
+        {
+            "id": 56,
+            "type": "TILE",
+            "name": "Curved bone",
+            "description": "Obtain a curved bone from any monster",
+            "url": "https://oldschool.runescape.wiki/w/Curved_bone#Item_sources"
+        },
+        {
+            "id": 57,
+            "type": "TILE",
+            "name": "Voidwaker hilt",
+            "description": "Obtain a Voidwaker hilt from either Callisto or Artio"
+        },
+        {
+            "id": 58,
+            "type": "TILE",
+            "name": "Ultor vestige",
+            "description": "Obtain an Ultor vestige from Vardorvis"
+        },
+        {
+            "id": 59,
+            "type": "TILE",
+            "name": "TODO - QUIVER",
+            "description": "TODO - QUIVER"
+        },
+        {
+            "id": 60,
+            "type": "TILE",
+            "name": "Revenant unique",
+            "description": "Obtain any revenant unique",
+            "url": "https://oldschool.runescape.wiki/w/Revenant_ork#Unique"
+        },
+        {
+            "id": 61,
+            "type": "TILE",
+            "name": "Saradomin hilt",
+            "description": "Obtain a Saradomin hilt from Commander Zilyana"
+        },
+        {
+            "id": 62,
+            "type": "TILE",
+            "name": "Theatre of Blood",
+            "description": "Obtain any TOB weapon or shield (Avernic, Rapier, Sanguinesti, Scythe)"
+        },
+        {
+            "id": 63,
+            "type": "TILE",
+            "name": "Mimic",
+            "description": "Get a Mimic casket"
+        },
+        {
+            "id": 64,
+            "type": "SKIP",
+            "destination_id": 68
+        },
+        {
+            "id": 65,
+            "type": "TILE",
+            "name": "Venator vestige",
+            "description": "Obtain a Venator vestige from the Leviathan"
+        },
+        {
+            "id": 66,
+            "type": "TILE",
+            "name": "Wards",
+            "description": "Complete both the Malediction ward and Odium ward (don't have to combine the pieces)"
+        },
+        {
+            "id": 67,
+            "type": "CHALLENGE",
+            "name": "Faithless Encounter",
+            "description": "Kill Vorkath without losing any prayer points."
+        },
+        {
+            "id": 68,
+            "type": "TILE",
+            "name": "Ancient statuette",
+            "description": "Obtain any Ancient statuette from Revenants or Bounty hunter",
+            "url": "https://oldschool.runescape.wiki/w/Revenant_ork#Ancient_statuettes"
+        },
+        {
+            "id": 69,
+            "type": "TILE",
+            "name": "Pharaoh's sceptre",
+            "description": "Obtain 3 Pharaoh's sceptres from the Pyramid plunder minigame"
+        },
+        {
+            "id": 70,
+            "type": "TILE",
+            "name": "Sunfire fanatic armour",
+            "description": "Obtain any Sunfire fanatic armour piece from the Colosseum"
+        },
+        {
+            "id": 71,
+            "type": "TILE",
+            "name": "TODO - NEW BOSS ARMOR",
+            "description": "TODO - NEW BOSS ARMOR"
+        },
+        {
+            "id": 72,
+            "type": "RETURN",
+            "destination_id": 67
+        },
+        {
+            "id": 73,
+            "type": "TILE",
+            "name": "Inferno capes",
+            "description": "TODO - INFERNO CAPES (3 capes - 2 fire capes per inferno cape as replacement?)"
+        },
+        {
+            "id": 74,
+            "type": "TILE",
+            "name": "Corporeal Beast",
+            "description": "Obtain any of these items from Corp: Pet, Jar, Holy elixir, any sigil"
+        },
+        {
+            "id": 75,
+            "type": "TILE",
+            "name": "Magus vestige",
+            "description": "Obtain a Magus vestige from Duke Sucellus"
+        },
+        {
+            "id": 76,
+            "type": "TILE",
+            "name": "Golden tench",
+            "description": "Obtain a Golden tench from aerial fishing at Lake Molch"
+        },
+        {
+            "id": 77,
+            "type": "TILE",
+            "name": "Inquisitor's armour",
+            "description": "Obtain any Inquisitor's armour piece from the (Phosani's) Nightmare"
+        },
+        {
+            "id": 78,
+            "type": "SKIP",
+            "destination_id": 82
+        },
+        {
+            "id": 79,
+            "type": "TILE",
+            "name": "Pet",
+            "description": "Obtain a Boss or Skilling pet except for: Skotos and chaos elemental"
+        },
+        {
+            "id": 80,
+            "type": "TILE",
+            "name": "Dragon warhammer",
+            "description": "Obtain a dragon warhammer from Lizardman shamans"
+        },
+        {
+            "id": 81,
+            "type": "TILE",
+            "name": "Jar",
+            "description": "Obtain any boss jar except for: Jar of darkness"
+        },
+        {
+            "id": 82,
+            "type": "TILE",
+            "name": "Virtus robes",
+            "description": "Obtain any virtus robe piece from any of the DT2 bosses"
+        },
+        {
+            "id": 83,
+            "type": "TILE",
+            "name": "TODO - NEW BOSS ARMOR",
+            "description": "TODO - NEW BOSS ARMOR"
+        },
+        {
+            "id": 84,
+            "type": "TILE",
+            "name": "Torva armour",
+            "description": "Obtain any Torva armour piece from Nex"
+        },
+        {
+            "id": 85,
+            "type": "CHALLENGE",
+            "name": "The Fremennik Way",
+            "description": "Kill Vorkath with only your fists."
+        },
+        {
+            "id": 86,
+            "type": "TILE",
+            "name": "Chambers of Xeric",
+            "description": "Obtain any Ancestral robe piece from COX"
+        },
+        {
+            "id": 87,
+            "type": "TILE",
+            "name": "Theatre of Blood",
+            "description": "Obtain any Justiciar armour piece from TOB"
+        },
+        {
+            "id": 88,
+            "type": "TILE",
+            "name": "Tombs of Amascut",
+            "description": "Obtain any Masori armour piece from TOA"
+        },
+        {
+            "id": 89,
+            "type": "RETURN",
+            "destination_id": 85
+        },
+        {
+            "id": 90,
+            "type": "END",
+            "name": "TODO - END CHALLENGE",
+            "description": "TODO - END CHALLENGE"
+        }
+    ]
+}

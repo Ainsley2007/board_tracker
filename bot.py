@@ -7,8 +7,9 @@ import discord
 from discord import app_commands
 
 from config import DISCORD_TOKEN
-
-from game_commands import roll_dice_command
+from db import get_channel_ids, set_meta
+from game_commands import complete_command, post_command, roll_dice_command
+from game_state import update_game_board
 from member_commands import add_member_command, remove_member_command
 from team_commands import create_team_command, delete_team_command
 
@@ -83,14 +84,72 @@ async def roll_cmd(inter: discord.Interaction):
     return await roll_dice_command(inter)
 
 
+@cmds.command(name="post", description="Upload a screenshot for the current tile")
+@app_commands.describe(proof="Image or short video that shows your progress")
+async def post_cmd(inter: discord.Interaction, proof: discord.Attachment):
+    return await post_command(inter, proof)
+
+
+@cmds.command(name="complete", description="Complete the current tile for your team")
+async def complete_cmd(inter: discord.Interaction):
+    return await complete_command(inter)
+
+
+DESIRED = {
+    "category": "Tile Race",
+    "board": "tr-board",
+    "proofs": "tr-proofs",
+    "cmd": "tr-commands",
+}
+
+
 @bot.event
 async def on_ready():
+    guilds = [g async for g in bot.fetch_guilds(limit=None)]
+    print(f"guilds: {guilds}")
+    for g in guilds:
+        await ensure_tile_race_channels(g)
+    print(f"Logged in as {bot.user} ({bot.user.id})")
+
     log.info("Logged in as %s (ID %s)", bot.user, bot.user.id)
     try:
-        await cmds.sync()  # <— global sync only
+        await cmds.sync()
         log.info("Commands synced globally (may take up to 1 h)")
     except Exception:
         log.exception("Slash command sync failed")
+
+
+async def ensure_tile_race_channels(guild: discord.Guild):
+    await guild.fetch_channels()
+    ids = get_channel_ids()
+
+    # 1 ▸ category ------------------------------------------------------
+    category = await guild.fetch_channel(ids["category"])
+
+    if category is None:
+        category = await guild.create_category(DESIRED["category"])
+    # always store the ID (may have been missing)
+    set_meta("tr_category_id", category.id)
+
+    # 2 ▸ helper to get-or-create a channel -----------------------------
+    async def need(name_key):
+        chan = await guild.fetch_channel(ids[name_key]) if ids[name_key] else None
+        if chan is None:
+            chan = await guild.create_text_channel(
+                DESIRED[name_key],
+                category=category,
+                topic="OSRS Tile-Race" if name_key != "proofs" else "Screenshots only",
+            )
+        # persist the ID in any case
+        set_meta(f"tr_{name_key}_id", chan.id)
+        return chan
+
+    board_chan = await need("board")
+    proofs_chan = await need("proofs")
+    cmd_chan = await need("cmd")
+
+    # 3 ▸ refresh the board --------------------------------------------
+    await update_game_board(bot)  # pass the client; helper pulls IDs
 
 
 if __name__ == "__main__":
