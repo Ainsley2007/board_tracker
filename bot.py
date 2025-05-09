@@ -8,7 +8,7 @@ from discord import app_commands
 
 from config import DISCORD_TOKEN
 from db import get_channel_ids, set_meta
-from game_commands import complete_command, post_command, roll_dice_command
+from game_commands import complete_command, info_command, post_command, roll_dice_command
 from game_state import update_game_board
 from member_commands import add_member_command, remove_member_command
 from team_commands import create_team_command, delete_team_command
@@ -84,6 +84,10 @@ async def roll_cmd(inter: discord.Interaction):
     return await roll_dice_command(inter)
 
 
+@cmds.command(name="tile-info", description="Get more info about your team's current tile")
+async def info_cmd(inter: discord.Interaction):
+    return await info_command(inter)
+
 @cmds.command(name="post", description="Upload a screenshot for the current tile")
 @app_commands.describe(proof="Image or short video that shows your progress")
 async def post_cmd(inter: discord.Interaction, proof: discord.Attachment):
@@ -140,9 +144,9 @@ async def ensure_tile_race_channels(guild: discord.Guild):
         set_meta(f"tr_{name_key}_id", chan.id)
         return chan
 
-    board_chan = await need("board")
-    proofs_chan = await need("proofs")
-    cmd_chan = await need("cmd")
+    await need("board")
+    await need("proofs")
+    await need("cmd")
 
     await update_game_board(bot)
 

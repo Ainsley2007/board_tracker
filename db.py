@@ -13,6 +13,13 @@ from tinydb import Query, TinyDB
 
 from config import DB_PATH
 
+CATEGORY_CHANNEL_ID = "tr_category_id"
+
+BOARD_CHANNEL_ID = "tr_board_id"
+BOARD_MESSAGE_ID = "tr_board_msg_id"
+
+PROOFS_CHANNEL_ID = "tr_proofs_id"
+COMMANDS_CHANNEL_ID = "tr_cmd_id"
 
 db = TinyDB(Path(DB_PATH))
 
@@ -39,27 +46,27 @@ def get_meta(key: str, default=None):
 
 def get_channel_ids():
     return {
-        "category": get_meta("tr_category_id"),
-        "board": get_meta("tr_board_id"),
-        "proofs": get_meta("tr_proofs_id"),
-        "cmd": get_meta("tr_cmd_id"),
+        "category": get_meta(CATEGORY_CHANNEL_ID),
+        "board": get_meta(BOARD_CHANNEL_ID),
+        "proofs": get_meta(PROOFS_CHANNEL_ID),
+        "cmd": get_meta(COMMANDS_CHANNEL_ID),
     }
 
 
 def get_proofs_channel_id() -> int | None:
-    return get_meta("tr_proofs_id")
+    return get_meta(PROOFS_CHANNEL_ID)
 
 
 def get_board_channel_id() -> int | None:
-    return get_meta("tr_board_id")
+    return get_meta(BOARD_CHANNEL_ID)
 
 
 def set_board_message_id(msg_id: int):
-    set_meta("tr_board_msg_id", msg_id)
+    set_meta(BOARD_MESSAGE_ID, msg_id)
 
 
 def get_board_message_id() -> int | None:
-    return get_meta("tr_board_msg_id")
+    return get_meta(BOARD_MESSAGE_ID)
 
 
 def slugify(name: str) -> str:
@@ -92,12 +99,12 @@ def remove_team(slug: str) -> tuple[int, int]:
     return len(teams_removed), len(members_removed)
 
 
-def get_team(slug: str):
-    return teams_table.get(Q.slug == slug)
+def get_team(team_id: str):
+    return teams_table.get(Q.slug == team_id)
 
 
 def get_teams():
-    return {row["slug"]: row for row in teams_table.all()}
+    return teams_table.all()
 
 
 def clear_pending_flag(slug: str):
@@ -109,11 +116,9 @@ def get_team_members(slug: str):
 
 
 def add_member(user_id: int, user_name, team_slug: str):
-    # make sure the team exists
     if not teams_table.contains(Q.slug == team_slug):
         raise ValueError("Team does not exist")
 
-    # prevent duplicates
     if members_table.contains(Q.user_id == int(user_id)):
         raise ValueError("User is already in a team")
 

@@ -2,6 +2,7 @@
     "tiles": [
         {
             "id": 0,
+            "name": "Start",
             "type": "START"
         },
         {
