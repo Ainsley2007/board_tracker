@@ -1,13 +1,13 @@
 import discord
 from board.board_detector import detect_tiles_by_bg
 from board.visualize import paint_team_circles
-from db import (
+from db.meta_table import (
     get_board_channel_id,
     get_board_message_id,
     set_board_message_id,
 )
-from member_service import fetch_team_members
-from team_service import fetch_teams
+from services.member_service import fetch_team_members
+from services.team_service import fetch_teams
 from tiles import get_tile
 
 BOARD_PNG = "assets/board_state.png"

@@ -1,7 +1,9 @@
 from dataclasses import dataclass
 from typing import List
 
-from db import get_team, get_teams
+from discord import Colour
+
+from db import teams_table as tt
 
 
 @dataclass(slots=True, frozen=True)
@@ -25,11 +27,22 @@ class Team:
         )
 
 
+def create_team(name: str, team_id: str, role_id: int, role_colour: Colour):
+    if tt.get_team(team_id) is not None:
+        raise ValueError(f"Team **{name}** already exists")
+
+    tt.add_team(name, team_id, role_id, role_colour.value)
+
+    doc = tt.get_team(team_id)
+    return Team.from_doc(doc)
+
+
 def fetch_teams() -> List[Team]:
-    return [Team.from_doc(doc) for doc in get_teams()]
+    return [Team.from_doc(doc) for doc in tt.get_teams()]
+
 
 def fetch_team_by_id(team_id):
-    doc = get_team(team_id)
+    doc = tt.get_team(team_id)
     if doc is None:
         return None
     return Team.from_doc(doc)

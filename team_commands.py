@@ -1,8 +1,8 @@
 import asyncio
 import discord
-from db import add_team, remove_team, slugify
+from db.db import add_team, remove_team, slugify
 from game_state import update_game_board
-from team_service import fetch_team_by_id
+from services.team_service import fetch_team_by_id
 
 
 async def create_team_command(inter: discord.Interaction, name: str):

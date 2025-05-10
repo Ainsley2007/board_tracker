@@ -1,1 +1,393 @@
-{"meta": {"1": {"key": "tr_category_id", "value": 1370148357711855626}, "2": {"key": "tr_board_id", "value": 1370148358894780607}, "3": {"key": "tr_proofs_id", "value": 1370148360232898560}, "4": {"key": "tr_cmd_id", "value": 1370148361465757766}, "5": {"key": "tr_board_msg_id", "value": 1370406179850944532}, "6": {"key": "tr_board_state_msg_id", "value": 1370396938872164362}}, "teams": {"1": {"slug": "rechtse_rakkers", "name": "Rechtse rakkers", "role_id": 1370148713003225160, "pos": 30, "color": 16711762, "pending": true}, "2": {"slug": "linkse_ratten", "name": "Linkse ratten", "role_id": 1370148753322934284, "pos": 19, "color": 16717056, "pending": true}, "3": {"slug": "middelste_rukkers", "name": "Middelste rukkers", "role_id": 1370388983061680233, "pos": 0, "color": 11775, "pending": false}}, "members": {"1": {"user_id": 170969158698139648, "user_name": "Gewoon Jeroen", "team_slug": "linkse_ratten"}, "2": {"user_id": 173886422187638784, "user_name": "Martina turner", "team_slug": "linkse_ratten"}, "4": {"user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "team_slug": "rechtse_rakkers"}, "5": {"user_id": 365594481594204161, "user_name": "Minerea\u266a", "team_slug": "middelste_rukkers"}, "6": {"user_id": 761945211781513218, "user_name": "kieketemmer", "team_slug": "linkse_ratten"}, "7": {"user_id": 206878451049824256, "user_name": "Cornelius coconut", "team_slug": "linkse_ratten"}}, "rolls": {"1": {"team_slug": "rechtse_rakkers", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "die": 6, "pos_before": 0, "pos_after": 6, "ts": "2025-05-08T21:24:37+00:00"}, "2": {"team_slug": "rechtse_rakkers", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "die": 2, "pos_before": 6, "pos_after": 8, "ts": "2025-05-09T09:31:37+00:00"}, "3": {"team_slug": "rechtse_rakkers", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "die": 2, "pos_before": 8, "pos_after": 10, "ts": "2025-05-09T12:03:45+00:00"}, "4": {"team_slug": "linkse_ratten", "user_id": 173886422187638784, "user_name": "Martina turner", "die": 3, "pos_before": 0, "pos_after": 3, "ts": "2025-05-09T12:35:34+00:00"}, "5": {"team_slug": "linkse_ratten", "user_id": 173886422187638784, "user_name": "Martina turner", "die": 3, "pos_before": 3, "pos_after": 6, "ts": "2025-05-09T12:36:12+00:00"}, "6": {"team_slug": "linkse_ratten", "user_id": 173886422187638784, "user_name": "Martina turner", "die": 1, "pos_before": 6, "pos_after": 7, "ts": "2025-05-09T12:39:07+00:00"}, "7": {"team_slug": "rechtse_rakkers", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "die": 5, "pos_before": 10, "pos_after": 15, "ts": "2025-05-09T12:42:38+00:00"}, "8": {"team_slug": "linkse_ratten", "user_id": 173886422187638784, "user_name": "Martina turner", "die": 5, "pos_before": 7, "pos_after": 12, "ts": "2025-05-09T12:42:58+00:00"}, "9": {"team_slug": "rechtse_rakkers", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "die": 1, "pos_before": 15, "pos_after": 16, "ts": "2025-05-09T12:44:59+00:00"}, "10": {"team_slug": "rechtse_rakkers", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "die": 4, "pos_before": 16, "pos_after": 20, "ts": "2025-05-09T13:09:37+00:00"}, "11": {"team_slug": "linkse_ratten", "user_id": 173886422187638784, "user_name": "Martina turner", "die": 5, "pos_before": 12, "pos_after": 17, "ts": "2025-05-09T13:22:38+00:00"}, "12": {"team_slug": "rechtse_rakkers", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "die": 4, "pos_before": 22, "pos_after": 26, "ts": "2025-05-09T14:52:27+00:00"}, "13": {"team_slug": "rechtse_rakkers", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "die": 2, "pos_before": 26, "pos_after": 28, "ts": "2025-05-09T14:54:45+00:00"}, "14": {"team_slug": "rechtse_rakkers", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "die": 2, "pos_before": 28, "pos_after": 30, "ts": "2025-05-09T14:55:46+00:00"}}, "proofs": {"1": {"team_slug": "rechtse_rakkers", "tile": 6, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370332249450483743/image.png?ex=681f1cdb&is=681dcb5b&hm=86b63993cfc0bf737d8243c0851f02654065e52fb2ab31d7fe107b689d79d36f&", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "ts": "2025-05-09T09:31:08+00:00"}, "2": {"team_slug": "rechtse_rakkers", "tile": 8, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370340210289807461/image.png?ex=681f2445&is=681dd2c5&hm=e87365f71f0c3c9b14a2c26ab39cc52e61807e181101af9eb766228c1f06da95&", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "ts": "2025-05-09T10:02:46+00:00"}, "3": {"team_slug": "rechtse_rakkers", "tile": 8, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370340248659300452/image.png?ex=681f244e&is=681dd2ce&hm=42827303671a92e262ec42e5a58144cc31c108171b640a96640a720675bdbf27&", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "ts": "2025-05-09T10:02:55+00:00"}, "4": {"team_slug": "linkse_ratten", "tile": 3, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370378698569809951/465265762_10231449638480732_4620297925615349266_n.png?ex=681f481e&is=681df69e&hm=d7c652f09521843249b7f8d5d5ff9c0088098f6c04880f3c6b42bd7a967f5124&", "user_id": 173886422187638784, "user_name": "Martina turner", "ts": "2025-05-09T12:35:43+00:00"}, "5": {"team_slug": "linkse_ratten", "tile": 6, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370379179824124074/images.png?ex=681f4890&is=681df710&hm=7cd4bb14f54ca657cda6e8ac24410a9278d46df3609128be82d1c95e08ebb812&", "user_id": 173886422187638784, "user_name": "Martina turner", "ts": "2025-05-09T12:37:38+00:00"}, "6": {"team_slug": "linkse_ratten", "tile": 7, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370379603201228942/1698394380203.png?ex=681f48f5&is=681df775&hm=1b8dce0ea92a8f475f85dd1ddf31cc67269b4193dc0406eee9cfa8147e367866&", "user_id": 173886422187638784, "user_name": "Martina turner", "ts": "2025-05-09T12:39:19+00:00"}, "7": {"team_slug": "rechtse_rakkers", "tile": 10, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370380197743952034/image.png?ex=681f4983&is=681df803&hm=370ddb22bf920c94d033336e8488ae253f71e05796a7b6b6a01e3f40172ecef4&", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "ts": "2025-05-09T12:41:40+00:00"}, "8": {"team_slug": "linkse_ratten", "tile": 12, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370380580260417536/468523375_10162398519286543_804780163597110831_n.png?ex=681f49de&is=681df85e&hm=1a8227634eb659fbd99291c9d10cbe27fc5346ff73f80c18e0d46c5777f64915&", "user_id": 173886422187638784, "user_name": "Martina turner", "ts": "2025-05-09T12:43:12+00:00"}, "9": {"team_slug": "linkse_ratten", "tile": 12, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370380687550709790/QuxC4pQf0fcCAAAAABJRU5ErkJggg.png?ex=681f49f8&is=681df878&hm=f8f6c22316415ab434bc8f83bc4b904ea17d7667251d647efcca5b197a8296b9&", "user_id": 173886422187638784, "user_name": "Martina turner", "ts": "2025-05-09T12:43:37+00:00"}, "10": {"team_slug": "rechtse_rakkers", "tile": 15, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370380722052792321/image.png?ex=681f4a00&is=681df880&hm=38de1c5bc6442dd7606af1de7e2bfd069a59411de5359d1bfda622a11006a246&", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "ts": "2025-05-09T12:43:45+00:00"}, "11": {"team_slug": "rechtse_rakkers", "tile": 15, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370380774234394724/image.png?ex=681f4a0d&is=681df88d&hm=4e8ef29038e9e3b785e3c1deed27884e0f6a4cca5e7e37002304a910dc13fbc2&", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "ts": "2025-05-09T12:43:58+00:00"}, "12": {"team_slug": "rechtse_rakkers", "tile": 15, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370380827174633532/image.png?ex=681f4a19&is=681df899&hm=6f8b78889e245a75827e62a79872c9c1bd73f54e4cf1e091cbfd3b5b67c33fd4&", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "ts": "2025-05-09T12:44:10+00:00"}, "13": {"team_slug": "rechtse_rakkers", "tile": 16, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370381091424309299/image.png?ex=681f4a58&is=681df8d8&hm=577adc9fdacf048ba0018236a77e145329f914a3e2d99332ea984066ec05fada&", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "ts": "2025-05-09T12:45:13+00:00"}, "14": {"team_slug": "rechtse_rakkers", "tile": 16, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370381122839511081/image.png?ex=681f4a60&is=681df8e0&hm=8d9dcbeae8ee0034e0956127ef3639f31a3bba36b68a4ccf223dd9103929ba0d&", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "ts": "2025-05-09T12:45:21+00:00"}, "15": {"team_slug": "rechtse_rakkers", "tile": 16, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370381167554986055/image.png?ex=681f4a6a&is=681df8ea&hm=a36ddba699c23211a1e64b81bc15b1140bead7ea0109351461911d1e1f13d01b&", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "ts": "2025-05-09T12:45:31+00:00"}, "16": {"team_slug": "rechtse_rakkers", "tile": 16, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370381243178291200/image.png?ex=681f4a7c&is=681df8fc&hm=6fded9991c7c7e851fae3817cb71236d4c5a764193904a4992f7e9fdcdc5198c&", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "ts": "2025-05-09T12:45:49+00:00"}, "17": {"team_slug": "rechtse_rakkers", "tile": 16, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370381285561995274/image.png?ex=681f4a86&is=681df906&hm=530aed89c1c88df81ca4c0d8f7688b7137af66ed660401055542590c4b37fea1&", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "ts": "2025-05-09T12:46:00+00:00"}, "18": {"team_slug": "rechtse_rakkers", "tile": 22, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370412244822917302/image.png?ex=681f675c&is=681e15dc&hm=2f991795c11d7720223053fd71758c74b1eba818b1368868d251cc86eb1376c7&", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "ts": "2025-05-09T14:49:01+00:00"}, "19": {"team_slug": "rechtse_rakkers", "tile": 26, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370413638124306442/image.png?ex=681f68a8&is=681e1728&hm=4cfc177d9f5f67023980e8ad412729f25e8d9020303877b18a338c9d3c7f1996&", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "ts": "2025-05-09T14:54:33+00:00"}, "20": {"team_slug": "rechtse_rakkers", "tile": 28, "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370413914680201227/image.png?ex=681f68ea&is=681e176a&hm=50f3ada01edb6a00984562c6de170e8820986d4455eafdf018e05bd33e06ebdb&", "user_id": 170969088829554688, "user_name": "Bombardiro crocodilo", "ts": "2025-05-09T14:55:39+00:00"}}}
+{
+    "meta": {
+        "1": {
+            "key": "tr_category_id",
+            "value": 1370148357711855626
+        },
+        "2": {
+            "key": "tr_board_id",
+            "value": 1370148358894780607
+        },
+        "3": {
+            "key": "tr_proofs_id",
+            "value": 1370148360232898560
+        },
+        "4": {
+            "key": "tr_cmd_id",
+            "value": 1370148361465757766
+        },
+        "5": {
+            "key": "tr_board_msg_id",
+            "value": 1370406179850944532
+        },
+        "6": {
+            "key": "tr_board_state_msg_id",
+            "value": 1370396938872164362
+        }
+    },
+    "teams": {
+        "1": {
+            "slug": "rechtse_rakkers",
+            "name": "Rechtse rakkers",
+            "role_id": 1370148713003225160,
+            "pos": 35,
+            "color": 16711762,
+            "pending": true
+        },
+        "2": {
+            "slug": "linkse_ratten",
+            "name": "Linkse ratten",
+            "role_id": 1370148753322934284,
+            "pos": 19,
+            "color": 16717056,
+            "pending": true
+        },
+        "3": {
+            "slug": "middelste_rukkers",
+            "name": "Middelste rukkers",
+            "role_id": 1370388983061680233,
+            "pos": 0,
+            "color": 11775,
+            "pending": false
+        }
+    },
+    "members": {
+        "1": {
+            "user_id": 170969158698139648,
+            "user_name": "Gewoon Jeroen",
+            "team_slug": "linkse_ratten"
+        },
+        "2": {
+            "user_id": 173886422187638784,
+            "user_name": "Martina turner",
+            "team_slug": "linkse_ratten"
+        },
+        "4": {
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "team_slug": "rechtse_rakkers"
+        },
+        "5": {
+            "user_id": 365594481594204161,
+            "user_name": "Minerea\u266a",
+            "team_slug": "middelste_rukkers"
+        },
+        "6": {
+            "user_id": 761945211781513218,
+            "user_name": "kieketemmer",
+            "team_slug": "linkse_ratten"
+        },
+        "7": {
+            "user_id": 206878451049824256,
+            "user_name": "Cornelius coconut",
+            "team_slug": "linkse_ratten"
+        }
+    },
+    "rolls": {
+        "1": {
+            "team_slug": "rechtse_rakkers",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "die": 6,
+            "pos_before": 0,
+            "pos_after": 6,
+            "ts": "2025-05-08T21:24:37+00:00"
+        },
+        "2": {
+            "team_slug": "rechtse_rakkers",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "die": 2,
+            "pos_before": 6,
+            "pos_after": 8,
+            "ts": "2025-05-09T09:31:37+00:00"
+        },
+        "3": {
+            "team_slug": "rechtse_rakkers",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "die": 2,
+            "pos_before": 8,
+            "pos_after": 10,
+            "ts": "2025-05-09T12:03:45+00:00"
+        },
+        "4": {
+            "team_slug": "linkse_ratten",
+            "user_id": 173886422187638784,
+            "user_name": "Martina turner",
+            "die": 3,
+            "pos_before": 0,
+            "pos_after": 3,
+            "ts": "2025-05-09T12:35:34+00:00"
+        },
+        "5": {
+            "team_slug": "linkse_ratten",
+            "user_id": 173886422187638784,
+            "user_name": "Martina turner",
+            "die": 3,
+            "pos_before": 3,
+            "pos_after": 6,
+            "ts": "2025-05-09T12:36:12+00:00"
+        },
+        "6": {
+            "team_slug": "linkse_ratten",
+            "user_id": 173886422187638784,
+            "user_name": "Martina turner",
+            "die": 1,
+            "pos_before": 6,
+            "pos_after": 7,
+            "ts": "2025-05-09T12:39:07+00:00"
+        },
+        "7": {
+            "team_slug": "rechtse_rakkers",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "die": 5,
+            "pos_before": 10,
+            "pos_after": 15,
+            "ts": "2025-05-09T12:42:38+00:00"
+        },
+        "8": {
+            "team_slug": "linkse_ratten",
+            "user_id": 173886422187638784,
+            "user_name": "Martina turner",
+            "die": 5,
+            "pos_before": 7,
+            "pos_after": 12,
+            "ts": "2025-05-09T12:42:58+00:00"
+        },
+        "9": {
+            "team_slug": "rechtse_rakkers",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "die": 1,
+            "pos_before": 15,
+            "pos_after": 16,
+            "ts": "2025-05-09T12:44:59+00:00"
+        },
+        "10": {
+            "team_slug": "rechtse_rakkers",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "die": 4,
+            "pos_before": 16,
+            "pos_after": 20,
+            "ts": "2025-05-09T13:09:37+00:00"
+        },
+        "11": {
+            "team_slug": "linkse_ratten",
+            "user_id": 173886422187638784,
+            "user_name": "Martina turner",
+            "die": 5,
+            "pos_before": 12,
+            "pos_after": 17,
+            "ts": "2025-05-09T13:22:38+00:00"
+        },
+        "12": {
+            "team_slug": "rechtse_rakkers",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "die": 4,
+            "pos_before": 22,
+            "pos_after": 26,
+            "ts": "2025-05-09T14:52:27+00:00"
+        },
+        "13": {
+            "team_slug": "rechtse_rakkers",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "die": 2,
+            "pos_before": 26,
+            "pos_after": 28,
+            "ts": "2025-05-09T14:54:45+00:00"
+        },
+        "14": {
+            "team_slug": "rechtse_rakkers",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "die": 2,
+            "pos_before": 28,
+            "pos_after": 30,
+            "ts": "2025-05-09T14:55:46+00:00"
+        },
+        "15": {
+            "team_slug": "rechtse_rakkers",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "die": 5,
+            "pos_before": 30,
+            "pos_after": 35,
+            "ts": "2025-05-09T17:50:04+00:00"
+        }
+    },
+    "proofs": {
+        "1": {
+            "team_slug": "rechtse_rakkers",
+            "tile": 6,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370332249450483743/image.png?ex=681f1cdb&is=681dcb5b&hm=86b63993cfc0bf737d8243c0851f02654065e52fb2ab31d7fe107b689d79d36f&",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "ts": "2025-05-09T09:31:08+00:00"
+        },
+        "2": {
+            "team_slug": "rechtse_rakkers",
+            "tile": 8,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370340210289807461/image.png?ex=681f2445&is=681dd2c5&hm=e87365f71f0c3c9b14a2c26ab39cc52e61807e181101af9eb766228c1f06da95&",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "ts": "2025-05-09T10:02:46+00:00"
+        },
+        "3": {
+            "team_slug": "rechtse_rakkers",
+            "tile": 8,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370340248659300452/image.png?ex=681f244e&is=681dd2ce&hm=42827303671a92e262ec42e5a58144cc31c108171b640a96640a720675bdbf27&",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "ts": "2025-05-09T10:02:55+00:00"
+        },
+        "4": {
+            "team_slug": "linkse_ratten",
+            "tile": 3,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370378698569809951/465265762_10231449638480732_4620297925615349266_n.png?ex=681f481e&is=681df69e&hm=d7c652f09521843249b7f8d5d5ff9c0088098f6c04880f3c6b42bd7a967f5124&",
+            "user_id": 173886422187638784,
+            "user_name": "Martina turner",
+            "ts": "2025-05-09T12:35:43+00:00"
+        },
+        "5": {
+            "team_slug": "linkse_ratten",
+            "tile": 6,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370379179824124074/images.png?ex=681f4890&is=681df710&hm=7cd4bb14f54ca657cda6e8ac24410a9278d46df3609128be82d1c95e08ebb812&",
+            "user_id": 173886422187638784,
+            "user_name": "Martina turner",
+            "ts": "2025-05-09T12:37:38+00:00"
+        },
+        "6": {
+            "team_slug": "linkse_ratten",
+            "tile": 7,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370379603201228942/1698394380203.png?ex=681f48f5&is=681df775&hm=1b8dce0ea92a8f475f85dd1ddf31cc67269b4193dc0406eee9cfa8147e367866&",
+            "user_id": 173886422187638784,
+            "user_name": "Martina turner",
+            "ts": "2025-05-09T12:39:19+00:00"
+        },
+        "7": {
+            "team_slug": "rechtse_rakkers",
+            "tile": 10,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370380197743952034/image.png?ex=681f4983&is=681df803&hm=370ddb22bf920c94d033336e8488ae253f71e05796a7b6b6a01e3f40172ecef4&",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "ts": "2025-05-09T12:41:40+00:00"
+        },
+        "8": {
+            "team_slug": "linkse_ratten",
+            "tile": 12,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370380580260417536/468523375_10162398519286543_804780163597110831_n.png?ex=681f49de&is=681df85e&hm=1a8227634eb659fbd99291c9d10cbe27fc5346ff73f80c18e0d46c5777f64915&",
+            "user_id": 173886422187638784,
+            "user_name": "Martina turner",
+            "ts": "2025-05-09T12:43:12+00:00"
+        },
+        "9": {
+            "team_slug": "linkse_ratten",
+            "tile": 12,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370380687550709790/QuxC4pQf0fcCAAAAABJRU5ErkJggg.png?ex=681f49f8&is=681df878&hm=f8f6c22316415ab434bc8f83bc4b904ea17d7667251d647efcca5b197a8296b9&",
+            "user_id": 173886422187638784,
+            "user_name": "Martina turner",
+            "ts": "2025-05-09T12:43:37+00:00"
+        },
+        "10": {
+            "team_slug": "rechtse_rakkers",
+            "tile": 15,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370380722052792321/image.png?ex=681f4a00&is=681df880&hm=38de1c5bc6442dd7606af1de7e2bfd069a59411de5359d1bfda622a11006a246&",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "ts": "2025-05-09T12:43:45+00:00"
+        },
+        "11": {
+            "team_slug": "rechtse_rakkers",
+            "tile": 15,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370380774234394724/image.png?ex=681f4a0d&is=681df88d&hm=4e8ef29038e9e3b785e3c1deed27884e0f6a4cca5e7e37002304a910dc13fbc2&",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "ts": "2025-05-09T12:43:58+00:00"
+        },
+        "12": {
+            "team_slug": "rechtse_rakkers",
+            "tile": 15,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370380827174633532/image.png?ex=681f4a19&is=681df899&hm=6f8b78889e245a75827e62a79872c9c1bd73f54e4cf1e091cbfd3b5b67c33fd4&",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "ts": "2025-05-09T12:44:10+00:00"
+        },
+        "13": {
+            "team_slug": "rechtse_rakkers",
+            "tile": 16,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370381091424309299/image.png?ex=681f4a58&is=681df8d8&hm=577adc9fdacf048ba0018236a77e145329f914a3e2d99332ea984066ec05fada&",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "ts": "2025-05-09T12:45:13+00:00"
+        },
+        "14": {
+            "team_slug": "rechtse_rakkers",
+            "tile": 16,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370381122839511081/image.png?ex=681f4a60&is=681df8e0&hm=8d9dcbeae8ee0034e0956127ef3639f31a3bba36b68a4ccf223dd9103929ba0d&",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "ts": "2025-05-09T12:45:21+00:00"
+        },
+        "15": {
+            "team_slug": "rechtse_rakkers",
+            "tile": 16,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370381167554986055/image.png?ex=681f4a6a&is=681df8ea&hm=a36ddba699c23211a1e64b81bc15b1140bead7ea0109351461911d1e1f13d01b&",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "ts": "2025-05-09T12:45:31+00:00"
+        },
+        "16": {
+            "team_slug": "rechtse_rakkers",
+            "tile": 16,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370381243178291200/image.png?ex=681f4a7c&is=681df8fc&hm=6fded9991c7c7e851fae3817cb71236d4c5a764193904a4992f7e9fdcdc5198c&",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "ts": "2025-05-09T12:45:49+00:00"
+        },
+        "17": {
+            "team_slug": "rechtse_rakkers",
+            "tile": 16,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370381285561995274/image.png?ex=681f4a86&is=681df906&hm=530aed89c1c88df81ca4c0d8f7688b7137af66ed660401055542590c4b37fea1&",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "ts": "2025-05-09T12:46:00+00:00"
+        },
+        "18": {
+            "team_slug": "rechtse_rakkers",
+            "tile": 22,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370412244822917302/image.png?ex=681f675c&is=681e15dc&hm=2f991795c11d7720223053fd71758c74b1eba818b1368868d251cc86eb1376c7&",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "ts": "2025-05-09T14:49:01+00:00"
+        },
+        "19": {
+            "team_slug": "rechtse_rakkers",
+            "tile": 26,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370413638124306442/image.png?ex=681f68a8&is=681e1728&hm=4cfc177d9f5f67023980e8ad412729f25e8d9020303877b18a338c9d3c7f1996&",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "ts": "2025-05-09T14:54:33+00:00"
+        },
+        "20": {
+            "team_slug": "rechtse_rakkers",
+            "tile": 28,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370413914680201227/image.png?ex=681f68ea&is=681e176a&hm=50f3ada01edb6a00984562c6de170e8820986d4455eafdf018e05bd33e06ebdb&",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "ts": "2025-05-09T14:55:39+00:00"
+        },
+        "21": {
+            "team_slug": "rechtse_rakkers",
+            "tile": 30,
+            "url": "https://cdn.discordapp.com/ephemeral-attachments/1367075633917722674/1370457710302331030/image.png?ex=681f91b4&is=681e4034&hm=1c9fdd4948dcfad260aa661bb9eb5c900821ab7337c0b4ce8336e7c603cd9a3a&",
+            "user_id": 170969088829554688,
+            "user_name": "Bombardiro crocodilo",
+            "ts": "2025-05-09T17:49:41+00:00"
+        }
+    }
+}

@@ -6,7 +6,7 @@ from typing import List, Union
 import aiohttp
 import discord
 
-from db import (
+from db.db import (
     add_proof,
     clear_pending_flag,
     get_member,
@@ -16,8 +16,8 @@ from db import (
     update_team_position,
 )
 from game_state import update_game_board
-from member_service import fetch_member
-from team_service import fetch_team_by_id
+from services.member_service import fetch_member
+from services.team_service import fetch_team_by_id
 from tiles import get_tile
 
 # ───────────────────────────── Dice roll lock ────────────────────────────────

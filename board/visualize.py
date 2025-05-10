@@ -2,7 +2,7 @@ import cv2
 from pathlib import Path
 from typing import Dict, List, Tuple
 
-from team_service import Team
+from services.team_service import Team
 
 
 def _int_to_bgr(col_int: int) -> Tuple[int, int, int]:

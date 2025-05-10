@@ -1,8 +1,8 @@
 import discord
 
-from db import add_member, remove_member, slugify
-from member_service import fetch_team_members
-from team_service import fetch_team_by_id
+from db.db import add_member, remove_member, slugify
+from services.member_service import fetch_team_members
+from services.team_service import fetch_team_by_id
 
 
 async def add_member_command(
