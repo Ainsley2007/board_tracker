@@ -4,6 +4,7 @@ from typing import List
 from discord import Colour
 
 from db import teams_table as tt
+from db import members_table as mt
 
 
 @dataclass(slots=True, frozen=True)
@@ -35,6 +36,13 @@ def create_team(name: str, team_id: str, role_id: int, role_colour: Colour):
 
     doc = tt.get_team(team_id)
     return Team.from_doc(doc)
+
+def remove_team(team_id):
+    if tt.get_team(team_id) is None:
+        raise ValueError(f"Team doesn't exist")
+    
+    mt.remove_members_by_team_id(team_id)
+    tt.remove_team(team_id)
 
 
 def fetch_teams() -> List[Team]:

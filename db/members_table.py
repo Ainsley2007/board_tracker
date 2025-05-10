@@ -29,6 +29,8 @@ def add_member(user_id: int, user_name, team_slug: str):
         }
     )
 
+def remove_members_by_team_id(team_id):
+    members_table.remove(Q.team_slug == team_id)
 
 def remove_member(user_id: int):
     if not members_table.contains(Q.user_id == int(user_id)):

@@ -7,10 +7,6 @@ teams_table = db.table("teams")
 Q = Query()
 
 
-def slugify(name: str) -> str:
-    return name.lower().replace(" ", "_")
-
-
 def add_team(name: str, slug: str, role_id: int, role_colour: Colour):
     teams_table.insert(
         {
@@ -25,15 +21,7 @@ def add_team(name: str, slug: str, role_id: int, role_colour: Colour):
 
 
 def remove_team(slug: str) -> tuple[int, int]:
-    if not teams_table.contains(Q.slug == slug):
-        raise ValueError("Team does not exist")
-
-    members_removed = members_table.remove(Q.team_slug == slug)
-
-    teams_removed = teams_table.remove(Q.slug == slug)
-
-    return len(teams_removed), len(members_removed)
-
+    teams_table.remove(Q.slug == slug)
 
 def get_team(team_id: str):
     return teams_table.get(Q.slug == team_id)

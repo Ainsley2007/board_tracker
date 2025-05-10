@@ -15,8 +15,8 @@ from game_commands import (
     roll_dice_command,
 )
 from game_state import update_game_board
-from member_commands import add_member_command, remove_member_command
-from team_commands import create_team_command, delete_team_command
+from commands.member_commands import add_member_command, remove_member_command
+from commands.team_commands import create_team_command, delete_team_command
 
 # ───────────────────────────── logging ────────────────────────────────
 logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(name)s: %(message)s")

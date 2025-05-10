@@ -1,8 +1,8 @@
 import discord
 
-from db.db import add_member, remove_member, slugify
 from services.member_service import fetch_team_members
 from services.team_service import fetch_team_by_id
+from util.utils import slugify
 
 
 async def add_member_command(
@@ -25,13 +25,7 @@ async def add_member_command(
     except ValueError as ve:
         return await inter.response.send_message(f"An error occurred: {ve}")
 
-    try:
-        await user.add_roles(role, reason="Added to tile-race team")
-    except discord.Forbidden:
-        return await inter.response.send_message(
-            "I don't have permission to add that role.",
-            ephemeral=True,
-        )
+    await user.add_roles(role, reason="Added to tile-race team")
 
     await inter.response.send_message(
         f"{user.mention} added to **{team.name}**, along with {other_members}!",
