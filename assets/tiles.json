@@ -362,8 +362,8 @@
         {
             "id": 59,
             "type": "TILE",
-            "name": "TODO - QUIVER",
-            "description": "TODO - QUIVER"
+            "name": "Colosseum",
+            "description": "Obtain five quivers if only one team member obtains them, four if two members obtain them, and three if three members obtain them"
         },
         {
             "id": 60,
@@ -446,8 +446,8 @@
         {
             "id": 73,
             "type": "TILE",
-            "name": "Inferno capes",
-            "description": "TODO - INFERNO CAPES (3 capes - 2 fire capes per inferno cape as replacement?)"
+            "name": "Inferno",
+            "description": "Obtain five infernal capes if only one team member obtains them, four if two members obtain them, and three if three members obtain them."
         },
         {
             "id": 74,

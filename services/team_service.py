@@ -32,15 +32,16 @@ def create_team(name: str, team_id: str, role_id: int, role_colour: Colour):
     if tt.get_team(team_id) is not None:
         raise ValueError(f"Team **{name}** already exists")
 
-    tt.add_team(name, team_id, role_id, role_colour.value)
+    tt.add_team(name, team_id, role_id, role_colour)
 
     doc = tt.get_team(team_id)
     return Team.from_doc(doc)
 
+
 def remove_team(team_id):
     if tt.get_team(team_id) is None:
         raise ValueError(f"Team doesn't exist")
-    
+
     mt.remove_members_by_team_id(team_id)
     tt.remove_team(team_id)
 
@@ -49,8 +50,27 @@ def fetch_teams() -> List[Team]:
     return [Team.from_doc(doc) for doc in tt.get_teams()]
 
 
+def fetch_sorted_teams() -> List[Team]:
+    teams = fetch_teams()
+    return sorted(
+        teams,
+        key=lambda team: team.position,
+        reverse=True,
+    )
+
+
 def fetch_team_by_id(team_id):
     doc = tt.get_team(team_id)
     if doc is None:
         return None
     return Team.from_doc(doc)
+
+
+def fetch_team_position(team_id):
+    sorted_teams = fetch_sorted_teams()
+
+    for rank, team in enumerate(sorted_teams, start=1):
+        if team.team_id == team_id:
+            return rank
+
+    raise ValueError(f"Team {team_id!r} not found")

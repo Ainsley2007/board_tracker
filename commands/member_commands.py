@@ -1,6 +1,6 @@
 import discord
 
-from services.member_service import fetch_team_members
+from services.member_service import add_member, fetch_team_members, remove_member
 from services.team_service import fetch_team_by_id
 from util.utils import slugify
 
@@ -12,6 +12,7 @@ async def add_member_command(
 ):
     team_id = slugify(role.name)
     team = fetch_team_by_id(team_id)
+
     if not team or team.role_id != role.id:
         return await inter.response.send_message(
             "That role is not a registered race team.",
@@ -23,7 +24,7 @@ async def add_member_command(
     try:
         add_member(user.id, user.display_name, team_id)
     except ValueError as ve:
-        return await inter.response.send_message(f"An error occurred: {ve}")
+        return await inter.response.send_message(str(ve), ephemeral=True)
 
     await user.add_roles(role, reason="Added to tile-race team")
 
@@ -41,10 +42,7 @@ async def remove_member_command(
     try:
         remove_member(user.id)
     except ValueError as ve:
-        return await inter.response.send_message(
-            f"An error occurred: {ve}",
-            ephemeral=True,
-        )
+        return await inter.response.send_message(str(ve), ephemeral=True)
 
     try:
         await user.remove_roles(role, reason="removed from tile-race team")
@@ -56,5 +54,4 @@ async def remove_member_command(
 
     await inter.response.send_message(
         f"{user.name} has been removed from {role}",
-        ephemeral=True,
     )

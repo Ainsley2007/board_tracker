@@ -1,5 +1,4 @@
-from tinydb import Query
-from db import db
+from db.client import db, Q
 
 CATEGORY_CHANNEL_ID = "tr_category_id"
 
@@ -10,10 +9,9 @@ PROOFS_CHANNEL_ID = "tr_proofs_id"
 COMMANDS_CHANNEL_ID = "tr_cmd_id"
 
 meta_table = db.table("meta")
-Q = Query()
 
 
-def set_meta(key: str, value):
+def set_meta(key: str, value) -> None:
     if meta_table.contains(Q.key == key):
         meta_table.update({"value": value}, Q.key == key)
     else:
@@ -42,7 +40,7 @@ def get_board_channel_id() -> int | None:
     return get_meta(BOARD_CHANNEL_ID)
 
 
-def set_board_message_id(msg_id: int):
+def set_board_message_id(msg_id: int) -> None:
     set_meta(BOARD_MESSAGE_ID, msg_id)
 
 

@@ -1,16 +1,14 @@
 from datetime import datetime, timezone
 from typing import List
-from tinydb import Query
 
-from db import db
+from db.client import Q, db
 
 
 proofs_table = db.table("proofs")
-Q = Query()
 
 
 def add_proof(
-    team_slug: str,
+    team_id: str,
     tile: int,
     url: str,
     user_id: int,
@@ -18,7 +16,7 @@ def add_proof(
 ):
     proofs_table.insert(
         {
-            "team_slug": team_slug,
+            "team_id": team_id,
             "tile": tile,
             "url": url,
             "user_id": user_id,
@@ -29,11 +27,11 @@ def add_proof(
 
 
 def list_proof_urls(
-    team_slug: str,
+    team_id: str,
     tile: int,
 ) -> List[str] | None:
 
-    query = (Q.team_slug == team_slug) & (Q.tile == tile)
+    query = (Q.team_id == team_id) & (Q.tile == tile)
 
     rows = proofs_table.search(query)
     rows.sort(key=lambda r: r["ts"])  # oldest → newest

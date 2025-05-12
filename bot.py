@@ -6,13 +6,13 @@ import os
 import discord
 from discord import app_commands
 
+from commands.roll_command import roll_dice_command
 from config import DISCORD_TOKEN
-from db.db import get_channel_ids, set_meta
-from game_commands import (
+from db.meta_table import get_channel_ids, set_meta
+from commands.game_commands import (
     complete_command,
     info_command,
     post_command,
-    roll_dice_command,
 )
 from game_state import update_game_board
 from commands.member_commands import add_member_command, remove_member_command

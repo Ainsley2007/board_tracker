@@ -2,8 +2,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List
 
-from db.members_table import get_member, get_team_members
-from db.teams_table import get_team
+from db import teams_table as tt
+from db import members_table as mt
 
 
 @dataclass(slots=True, frozen=True)
@@ -28,17 +28,27 @@ class Member:
 
 
 def fetch_team_members(team_slug: str) -> List[Member]:
-    return [Member.from_doc(doc) for doc in get_team_members(team_slug)]
+    return [Member.from_doc(doc) for doc in mt.get_team_members(team_slug)]
 
 
 def fetch_member(user_id: int) -> Member | None:
-    if member_doc := get_member(user_id):
-        return None
+    if member_doc := mt.get_member(user_id):
+        return Member.from_doc(member_doc)
+    return None
 
-    return Member.from_doc(member_doc)
+
+def add_member(user_id: int, user_name: str, team_id: str):
+    if tt.get_team(team_id) is None:
+        raise ValueError("The team you're trying to add this user to doesn't exist")
+
+    if fetch_member(user_id) is not None:
+        raise ValueError("User is already in a team")
+
+    mt.add_member(user_id, user_name, team_id)
 
 
-def add_member(user_id: int, user_name, team_id: str):
-    if team := get_team(team_id):
-        return None
-    add_member(user_id, user_name, team_id)
+def remove_member(user_id: int):
+    if fetch_member(user_id) is None:
+        raise ValueError("User is not in a team")
+
+    mt.remove_member(user_id)

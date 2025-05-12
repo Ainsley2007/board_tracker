@@ -32,7 +32,7 @@ def paint_team_circles(
 
     for idx, team_list in tile_to_teams.items():
         if idx >= len(tiles):
-            print(f"⚠  Tile index {idx} not in tiles list – skipped")
+            print(f"⚠  Tile index {idx} not in tiles list - skipped")
             continue
 
         x, y, w, h = tiles[idx]

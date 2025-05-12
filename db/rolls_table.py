@@ -1,15 +1,12 @@
 from datetime import datetime, timezone
-from tinydb import Query
-from db import db
-
+from db.client import db, Q
 
 rolls_table = db.table("rolls")
-Q = Query()
 
 
 def log_roll(
     *,
-    team_slug: str,
+    team_id: str,
     user_id: int,
     user_name: str,
     die: int,
@@ -18,7 +15,7 @@ def log_roll(
 ):
     rolls_table.insert(
         {
-            "team_slug": team_slug,
+            "team_id": team_id,
             "user_id": user_id,
             "user_name": user_name,
             "die": die,
@@ -29,6 +26,6 @@ def log_roll(
     )
 
 
-def last_roll(team_slug: str) -> dict | None:
-    rows = rolls_table.search(Q.team_slug == team_slug)
+def last_roll(team_id: str) -> dict | None:
+    rows = rolls_table.search(Q.team_id == team_id)
     return max(rows, key=lambda r: r["ts"]) if rows else None
