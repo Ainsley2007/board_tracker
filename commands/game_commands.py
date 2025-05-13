@@ -7,7 +7,7 @@ import aiohttp
 import discord
 
 from db.meta_table import get_proofs_channel_id
-from db.proofs_table import add_proof, list_proof_urls
+from db.proofs_table import add_proof, list_proof_urls, list_proofs
 
 from db.teams_table import clear_pending_flag
 from game_state import update_game_board
@@ -126,51 +126,47 @@ async def complete_command(inter: discord.Interaction):
     asyncio.create_task(update_game_board(inter.client))
 
     await send_proof_embed(
-        guild=inter.guild,
+        inter=inter,
         team_id=team.team_id,
-        submitter=inter.user,
         tile_number=team.position,
     )
 
 
 async def send_proof_embed(
-    guild: discord.Guild,
+    inter: discord.Interaction,
     team_id: str,
-    submitter: Union[discord.Member, discord.User],
     tile_number: int,
 ):
     proofs_channel_id = get_proofs_channel_id()
-    channel = guild.get_channel(proofs_channel_id)
+    channel = inter.guild.get_channel(proofs_channel_id)
     if channel is None:
         raise RuntimeError("Proofs channel not found")
 
-    urls = list_proof_urls(team_id=team_id, tile=tile_number)
-    if not urls:
+    proofs = list_proofs(team_id=team_id, tile=tile_number)
+    if not proofs:
         return
 
     team = fetch_team_by_id(team_id)
-    role = guild.get_role(team.role_id) if team else None
-    who = submitter.mention
-
-    # header = f"{role.mention if role else team_id} — submitted by {submitter.mention}"
-    # return await send_proofs_as_attachments(channel, urls, header=header)
+    role = inter.guild.get_role(team.role_id) if team else None
 
     embeds: list[discord.Embed] = []
     info_embed = discord.Embed(
         title=f"{team.name} — tile {tile_number}",
-        description=f"{role.mention if role else team.name} — submitted by {who}",
+        description=f"{role.mention if role else team.name}",
         colour=discord.Colour.blue(),
-        timestamp=datetime.now(timezone.utc),
     )
     info_embed.set_footer(text="OSRS Tile-Race proof")
 
     embeds.append(info_embed)
 
-    for i, url in enumerate(urls, start=1):
+    for i, proof in enumerate(proofs, start=1):
+        submitter = await inter.guild.fetch_member(proof["user_id"])
         embed = discord.Embed(
-            title=f"(proof {i}/{len(urls)})",
+            title=f"(proof {i}/{len(proofs)})",
+            timestamp=datetime.fromisoformat(proof["ts"]),
         )
-        embed.set_image(url=url)
+        embed.add_field(name="Submitted by", value=submitter.mention)
+        embed.set_image(url=proof["url"])
         embeds.append(embed)
 
     await channel.send(embeds=embeds)

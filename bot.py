@@ -108,7 +108,7 @@ async def complete_cmd(inter: discord.Interaction):
 
 
 DESIRED = {
-    "category": "Tile Race",
+    "category": "╔═══Tile race 2025═══╗",
     "board": "tr-board",
     "proofs": "tr-proofs",
     "cmd": "tr-commands",

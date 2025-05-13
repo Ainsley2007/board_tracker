@@ -9,7 +9,6 @@ from services.member_service import fetch_member
 from services.team_service import (
     fetch_sorted_teams,
     fetch_team_by_id,
-    fetch_team_position,
 )
 from tiles import get_tile
 
@@ -32,6 +31,13 @@ async def roll_dice_command(inter: discord.Interaction):
 
     team = await _get_team(inter, member)
     if not team:
+        return
+
+    if team.position >= 90:
+        await inter.followup.send(
+            "You have finished the race! any further rolls are pointless.",
+            ephemeral=True,
+        )
         return
 
     die, old_pos, rolled_pos = _roll_die(team.position)
@@ -151,7 +157,7 @@ async def _update_state(team_id, old_pos, final_pos, die, user, bot):
 async def _send_roll_embed(inter, team, tile_info, die, moved_note):
     colour = discord.Colour(team.color) if team.color else discord.Colour.gold()
     embed = discord.Embed(
-        title=f"🎲 {inter.user.global_name} rolled a {die}!{moved_note}",
+        title=f"🎲 {inter.user.display_name} rolled a {die}!{moved_note}",
         colour=colour,
         timestamp=datetime.now(timezone.utc),
     )

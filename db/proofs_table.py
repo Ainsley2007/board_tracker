@@ -38,3 +38,14 @@ def list_proof_urls(
     urls = [r["url"] for r in rows]
 
     return urls
+
+
+def list_proofs(
+    team_id: str,
+    tile: int,
+):
+    query = (Q.team_id == team_id) & (Q.tile == tile)
+    rows = proofs_table.search(query)
+    rows.sort(key=lambda r: r["ts"])
+
+    return rows
