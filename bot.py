@@ -92,8 +92,9 @@ async def roll_cmd(inter: discord.Interaction):
 @cmds.command(
     name="tile-info", description="Get more info about your team's current tile"
 )
-async def info_cmd(inter: discord.Interaction):
-    return await info_command(inter)
+@app_commands.describe(tile_nr="Tile number you want info about")
+async def info_cmd(inter: discord.Interaction, tile_nr: int = None):
+    return await info_command(inter, tile_nr)
 
 
 @cmds.command(name="post", description="Upload a screenshot for the current tile")

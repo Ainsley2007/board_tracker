@@ -107,7 +107,7 @@
             "id": 17,
             "type": "CHALLENGE",
             "name": "Can't Touch me",
-            "description": "Kill Dharok, Verac, Torag and Guthan without letting them attack you with melee."
+            "description": "Kill Dharok, Verac, Torag and Guthan without letting them attack you with melee. (CA)"
         },
         {
             "id": 18,
@@ -250,7 +250,7 @@
             "id": 40,
             "type": "CHALLENGE",
             "name": "Egniol Diet II",
-            "description": "Kill the Corrupted Hunllef without making an egniol potion within the Corrupted Gauntlet."
+            "description": "Kill the Corrupted Hunllef without making an egniol potion within the Corrupted Gauntlet. (CA)"
         },
         {
             "id": 41,
@@ -411,7 +411,7 @@
             "id": 67,
             "type": "CHALLENGE",
             "name": "Faithless Encounter",
-            "description": "Kill Vorkath without losing any prayer points."
+            "description": "Kill Vorkath without losing any prayer points. (CA)"
         },
         {
             "id": 68,
@@ -518,7 +518,7 @@
             "id": 85,
             "type": "CHALLENGE",
             "name": "The Fremennik Way",
-            "description": "Kill Vorkath with only your fists."
+            "description": "Kill Vorkath with only your fists. (CA)"
         },
         {
             "id": 86,

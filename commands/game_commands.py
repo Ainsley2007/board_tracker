@@ -16,7 +16,7 @@ from services.team_service import fetch_team_by_id
 from tiles import get_tile
 
 
-async def info_command(inter: discord.Interaction):
+async def info_command(inter: discord.Interaction, tile_id: int):
     await inter.response.defer(ephemeral=True)
 
     member = fetch_member(inter.user.id)
@@ -32,7 +32,10 @@ async def info_command(inter: discord.Interaction):
             ephemeral=True,
         )
 
-    tile = get_tile(team.position)
+    if tile_id is not None:
+        tile = get_tile(tile_id)
+    else:
+        tile = get_tile(team.position)
 
     embed = discord.Embed(title=tile.get("name"))
     embed.add_field(name="**Tile**", value=tile.get("id"), inline=False)
