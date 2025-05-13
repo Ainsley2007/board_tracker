@@ -156,7 +156,7 @@ async def send_proof_embed(
     info_embed = discord.Embed(
         title=f"{team.name} — tile {tile_number}",
         description=f"{role.mention if role else team.name}",
-        colour=discord.Colour.blue(),
+        colour=team.color,
     )
     info_embed.set_footer(text="OSRS Tile-Race proof")
 
@@ -167,6 +167,7 @@ async def send_proof_embed(
         embed = discord.Embed(
             title=f"(proof {i}/{len(proofs)})",
             timestamp=datetime.fromisoformat(proof["ts"]),
+            color=team.color,
         )
         embed.add_field(name="Submitted by", value=submitter.mention)
         embed.set_image(url=proof["url"])

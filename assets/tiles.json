@@ -40,7 +40,7 @@
             "id": 6,
             "type": "TILE",
             "name": "Vorkath head",
-            "description": "Obtain 3 Vorkath heads from Vorkath"
+            "description": "Obtain 4 Vorkath heads from Vorkath"
         },
         {
             "id": 7,
@@ -71,7 +71,7 @@
             "id": 11,
             "type": "TILE",
             "name": "Barrows mismatched set",
-            "description": "Obtain 4 Barrows items (any Helm, any Body, any Legs, any Weapon)"
+            "description": "Obtain a mismatched Barrows set (any Helm, any Body, any Legs, any Weapon)"
         },
         {
             "id": 12,
@@ -168,7 +168,7 @@
             "id": 27,
             "type": "TILE",
             "name": "Elder chaos robes",
-            "description": "Obtain any piece of Elder robe"
+            "description": "Obtain any piece of Elder chaos robe"
         },
         {
             "id": 28,
@@ -238,7 +238,7 @@
             "id": 38,
             "type": "TILE",
             "name": "Quartz collection",
-            "description": "Obtain all 4 Quartz from Desert Treasure II"
+            "description": "Obtain all 4 Quartz from Desert Treasure II bosses"
         },
         {
             "id": 39,
@@ -308,7 +308,7 @@
             "id": 50,
             "type": "TILE",
             "name": "Enhanced or armour seeds",
-            "description": "Obtain an Enhanced crystal weapon seed or 5 Crystal armour seeds from The (corrupted) Gauntlet"
+            "description": "Obtain an Enhanced crystal weapon seed or 4 Crystal armour seeds from The (corrupted) Gauntlet"
         },
         {
             "id": 51,
@@ -482,7 +482,8 @@
             "id": 79,
             "type": "TILE",
             "name": "Pet",
-            "description": "Obtain a Boss or Skilling pet except for: Skotos and chaos elemental"
+            "description": "Obtain a Boss or Skilling pet except for: Skotos and chaos elemental",
+            "url": "https://pastebin.com/tuMHhew5"
         },
         {
             "id": 80,
@@ -499,7 +500,7 @@
         {
             "id": 82,
             "type": "TILE",
-            "name": "Virtus robes",
+            "name": "Virtus",
             "description": "Obtain any virtus robe piece from any of the DT2 bosses"
         },
         {
@@ -511,7 +512,7 @@
         {
             "id": 84,
             "type": "TILE",
-            "name": "Torva armour",
+            "name": "Torva",
             "description": "Obtain any Torva armour piece from Nex"
         },
         {
