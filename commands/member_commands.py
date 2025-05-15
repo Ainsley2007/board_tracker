@@ -28,7 +28,7 @@ async def add_member_command(
 
     await user.add_roles(role, reason="Added to tile-race team")
 
-    await inter.response.send_message(
+    return await inter.response.send_message(
         f"{user.mention} added to **{team.name}**, along with {other_members}!",
         allowed_mentions=discord.AllowedMentions(users=True, roles=True),
     )

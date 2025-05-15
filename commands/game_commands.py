@@ -1,67 +1,22 @@
-from datetime import datetime, timezone
-import io
 import asyncio
-from typing import List, Union
+from datetime import datetime
 
-import aiohttp
 import discord
 
+from commands.common import get_member, get_team
 from db.meta_table import get_proofs_channel_id
 from db.proofs_table import add_proof, list_proof_urls, list_proofs
-
 from db.teams_table import clear_pending_flag
 from game_state import update_game_board
 from services.member_service import fetch_member
 from services.team_service import fetch_team_by_id
-from tiles import get_tile
-
-
-async def info_command(inter: discord.Interaction, tile_id: int):
-    await inter.response.defer(ephemeral=True)
-
-    member = fetch_member(inter.user.id)
-    if not member:
-        return await inter.followup.send(
-            "You're not on a team. Ask an admin to add you.", ephemeral=True
-        )
-
-    team = fetch_team_by_id(member.team_id)
-    if not team:
-        return await inter.followup.send(
-            "Your team is missing. Ping an admin.",
-            ephemeral=True,
-        )
-
-    if tile_id is not None:
-        tile = get_tile(tile_id)
-    else:
-        tile = get_tile(team.position)
-
-    embed = discord.Embed(title=tile.get("name"))
-    embed.add_field(name="**Tile**", value=tile.get("id"), inline=False)
-    embed.add_field(name="**Description**", value=tile.get("description"), inline=False)
-
-    if url := tile.get("url"):
-        embed.add_field(name="More info", value=f"<{url}>", inline=False)
-
-    return await inter.followup.send(embed=embed)
 
 
 async def post_command(inter: discord.Interaction, proof: discord.Attachment):
     await inter.response.defer(ephemeral=True)
 
-    member = fetch_member(inter.user.id)
-    if not member:
-        return await inter.followup.send(
-            "You're not on a team. Ask an admin to add you.", ephemeral=True
-        )
-
-    team = fetch_team_by_id(member.team_id)
-    if not team:
-        return await inter.followup.send(
-            "Your team is missing. Ping an admin.",
-            ephemeral=True,
-        )
+    if not (member := await get_member(inter)): return
+    if not (team := await get_team(inter, member)): return
 
     if not team.pending:
         return await inter.followup.send(
@@ -92,31 +47,23 @@ async def post_command(inter: discord.Interaction, proof: discord.Attachment):
 async def complete_command(inter: discord.Interaction):
     await inter.response.defer(ephemeral=True)
 
-    member = fetch_member(inter.user.id)
-    if not member:
-        return await inter.followup.send(
-            "You're not on a team. Ask an admin to add you.", ephemeral=True
-        )
-
-    team = fetch_team_by_id(member.team_id)
-    if not team:
-        return await inter.followup.send(
-            "Your team is missing. Ping an admin.",
-            ephemeral=True,
-        )
+    if not (member := await get_member(inter)): return
+    if not (team := await get_team(inter, member)): return
 
     if not team.pending:
-        return await inter.followup.send(
+        await inter.followup.send(
             "Can't complete if your team hasn't rolled yet.",
             ephemeral=True,
         )
+        return
 
     if not list_proof_urls(team_id=member.team_id, tile=team.position):
-        return await inter.followup.send(
+        await inter.followup.send(
             "No proof uploaded for this tile yet. "
             "Use `/post` to upload a screenshot first.",
             ephemeral=True,
         )
+        return
 
     clear_pending_flag(member.team_id)
 
@@ -136,9 +83,9 @@ async def complete_command(inter: discord.Interaction):
 
 
 async def send_proof_embed(
-    inter: discord.Interaction,
-    team_id: str,
-    tile_number: int,
+        inter: discord.Interaction,
+        team_id: str,
+        tile_number: int,
 ):
     proofs_channel_id = get_proofs_channel_id()
     channel = inter.guild.get_channel(proofs_channel_id)
@@ -174,25 +121,3 @@ async def send_proof_embed(
         embeds.append(embed)
 
     await channel.send(embeds=embeds)
-
-
-async def send_proofs_as_attachments(
-    channel: discord.TextChannel,
-    urls: List[str],
-    header: str = "",
-) -> None:
-    async with aiohttp.ClientSession() as session:
-        files = []
-        for i, url in enumerate(urls[:10], 1):
-            async with session.get(url) as resp:
-                data = await resp.read()
-
-            # Use BytesIO so nothing is written to disk
-            fp = io.BytesIO(data)
-            fp.seek(0)
-            # Guess a filename extension from the URL (Discord likes it)
-            ext = url.rsplit(".", 1)[-1][:4] or "png"
-            filename = f"proof_{i}.{ext}"
-            files.append(discord.File(fp, filename=filename))
-
-        await channel.send(content=header, files=files)

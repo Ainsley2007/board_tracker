@@ -2,6 +2,8 @@ import asyncio
 from datetime import datetime, timezone
 import secrets
 import discord
+
+from commands.common import get_member, get_team
 from db.rolls_table import log_roll
 from db.teams_table import update_team_position
 from game_state import update_game_board
@@ -25,47 +27,31 @@ def get_team_lock(slug: str) -> asyncio.Lock:
 async def roll_dice_command(inter: discord.Interaction):
     await inter.response.defer(ephemeral=False)
 
-    member = await _get_member(inter)
-    if not member:
-        return
+    if not (member := await get_member(inter)): return
+    if not (team := await get_team(inter, member)): return
 
-    team = await _get_team(inter, member)
-    if not team:
-        return
+    lock = get_team_lock(team.team_id)
+    async with lock:
+        if team.pending:
+            return await inter.followup.send(
+                "Your team already rolled. Complete the tile first!",
+                ephemeral=True,
+            )
 
-    if team.position >= 90:
-        await inter.followup.send(
-            "You have finished the race! any further rolls are pointless.",
-            ephemeral=True,
+        if team.position >= 90:
+            return await inter.followup.send(
+                "Your team has finished the race! any further rolls are pointless.",
+                ephemeral=True,
+            )
+
+        die, old_pos, rolled_pos = _roll_die(team.position)
+        final_pos, moved_note = _apply_tile_effect(rolled_pos, member.team_id)
+        await _update_state(
+            member.team_id, old_pos, final_pos, die, inter.user, inter.client
         )
-        return
 
-    die, old_pos, rolled_pos = _roll_die(team.position)
-    final_pos, moved_note = _apply_tile_effect(rolled_pos, member.team_id)
-    await _update_state(
-        member.team_id, old_pos, final_pos, die, inter.user, inter.client
-    )
-
-    tile_info = get_tile(final_pos) or {}
-    await _send_roll_embed(inter, team, tile_info, die, moved_note)
-
-
-async def _get_member(inter):
-    m = fetch_member(inter.user.id)
-    if not m:
-        await inter.followup.send(
-            "You're not on a team. Ask an admin to add you.", ephemeral=True
-        )
-    return m
-
-
-async def _get_team(inter, member):
-    t = fetch_team_by_id(member.team_id)
-    if not t:
-        await inter.followup.send(
-            "Internal error: your team is missing. Ping an admin.", ephemeral=True
-        )
-    return t
+        tile_info = get_tile(final_pos) or {}
+        await _send_roll_embed(inter, team, tile_info, die, moved_note)
 
 
 def _roll_die(position):
@@ -140,18 +126,16 @@ def _apply_skip_tile_effect(tile, rolled_pos, team_id) -> tuple[int, str]:
 
 
 async def _update_state(team_id, old_pos, final_pos, die, user, bot):
-    lock = get_team_lock(team_id)
-    async with lock:
-        update_team_position(final_pos, team_id)
-        log_roll(
-            team_id=team_id,
-            user_id=user.id,
-            user_name=user.display_name,
-            die=die,
-            pos_before=old_pos,
-            pos_after=final_pos,
-        )
-        asyncio.create_task(update_game_board(bot))
+    update_team_position(final_pos, team_id)
+    log_roll(
+        team_id=team_id,
+        user_id=user.id,
+        user_name=user.display_name,
+        die=die,
+        pos_before=old_pos,
+        pos_after=final_pos,
+    )
+    asyncio.create_task(update_game_board(bot))
 
 
 async def _send_roll_embed(inter, team, tile_info, die, moved_note):

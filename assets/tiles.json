@@ -107,7 +107,7 @@
             "id": 17,
             "type": "CHALLENGE",
             "name": "Can't Touch me",
-            "description": "Kill Dharok, Verac, Torag and Guthan without letting them attack you with melee. (CA)"
+            "description": "Kill Dharok, Verac, Torag and Guthan without letting them attack you with melee (CA)"
         },
         {
             "id": 18,
@@ -250,7 +250,7 @@
             "id": 40,
             "type": "CHALLENGE",
             "name": "Egniol Diet II",
-            "description": "Kill the Corrupted Hunllef without making an egniol potion within the Corrupted Gauntlet. (CA)"
+            "description": "Kill the Corrupted Hunllef without making an egniol potion within the Corrupted Gauntlet (CA)"
         },
         {
             "id": 41,
@@ -343,9 +343,8 @@
         {
             "id": 56,
             "type": "TILE",
-            "name": "Curved bone",
-            "description": "Obtain a curved bone from any monster",
-            "url": "https://oldschool.runescape.wiki/w/Curved_bone#Item_sources"
+            "name": "Yama",
+            "description": "Obtain any unique from Yama"
         },
         {
             "id": 57,
@@ -410,8 +409,8 @@
         {
             "id": 67,
             "type": "CHALLENGE",
-            "name": "Faithless Encounter",
-            "description": "Kill Vorkath without losing any prayer points. (CA)"
+            "name": "I Would Simply React",
+            "description": "Kill Phosani's Nightmare without allowing your prayer to be disabled (CA)"
         },
         {
             "id": 68,
@@ -435,8 +434,9 @@
         {
             "id": 71,
             "type": "TILE",
-            "name": "TODO - NEW BOSS ARMOR",
-            "description": "TODO - NEW BOSS ARMOR"
+            "name": "Curved Bone",
+            "description": "Obtain a curved bone from any monster",
+            "url": "https://oldschool.runescape.wiki/w/Curved_bone#Item_sources"
         },
         {
             "id": 72,
@@ -489,7 +489,7 @@
             "id": 80,
             "type": "TILE",
             "name": "Dragon warhammer",
-            "description": "Obtain a dragon warhammer from Lizardman shamans"
+            "description": "Obtain a Dragon warhammer from Lizardman shamans"
         },
         {
             "id": 81,
@@ -500,14 +500,14 @@
         {
             "id": 82,
             "type": "TILE",
-            "name": "Virtus",
-            "description": "Obtain any virtus robe piece from any of the DT2 bosses"
+            "name": "Oathplate",
+            "description": "Obtain any Oathplate armour piece from Yama"
         },
         {
             "id": 83,
             "type": "TILE",
-            "name": "TODO - NEW BOSS ARMOR",
-            "description": "TODO - NEW BOSS ARMOR"
+            "name": "Virtus",
+            "description": "Obtain any Virtus robe piece from any of the DT2 bosses"
         },
         {
             "id": 84,
@@ -519,24 +519,24 @@
             "id": 85,
             "type": "CHALLENGE",
             "name": "The Fremennik Way",
-            "description": "Kill Vorkath with only your fists. (CA)"
+            "description": "Kill Vorkath with only your fists (CA)"
         },
         {
             "id": 86,
             "type": "TILE",
-            "name": "Chambers of Xeric",
+            "name": "Ancestral",
             "description": "Obtain any Ancestral robe piece from COX"
         },
         {
             "id": 87,
             "type": "TILE",
-            "name": "Theatre of Blood",
+            "name": "Justiciar",
             "description": "Obtain any Justiciar armour piece from TOB"
         },
         {
             "id": 88,
             "type": "TILE",
-            "name": "Tombs of Amascut",
+            "name": "Masori",
             "description": "Obtain any Masori armour piece from TOA"
         },
         {
@@ -548,7 +548,7 @@
             "id": 90,
             "type": "END",
             "name": "The Final Challenge",
-            "description": "Gather more than 600m in loot doing your favourite piece of pvm content"
+            "description": "Obtain 500m or more in loot (min. 10m per proof, valued at time of drop)"
         }
     ]
 }

@@ -1,14 +1,18 @@
 import asyncio
 import discord
+
 from game_state import update_game_board
-from services.team_service import create_team, fetch_team_by_id, remove_team
+from services.team_service import create_team, remove_team
+from util.logger import log
 from util.utils import slugify
 
 
-async def create_team_command(inter: discord.Interaction, name: str):
+async def create_team_command(inter, name: str):
+    inter.response.defer(ephemeral=True)
+
     guild = inter.guild
     team_id = slugify(name)
-    role_colour = discord.Colour.random()
+    role_colour = discord.Colour.random(seed=name)
 
     role = await guild.create_role(
         name=name,
@@ -21,17 +25,20 @@ async def create_team_command(inter: discord.Interaction, name: str):
         create_team(name, team_id, role.id, role_colour)
     except ValueError as ve:
         await role.delete()
+        log.error(str(ve))
         return await inter.response.send_message(str(ve), ephemeral=True)
 
     asyncio.create_task(update_game_board(inter.client))
 
-    await inter.response.send_message(
+    return await inter.response.send_message(
         f"Team **{role.mention}** created!",
         allowed_mentions=discord.AllowedMentions(roles=True),
+        ephemeral=True,
     )
 
 
-async def delete_team_command(inter: discord.Interaction, role: discord.Role):
+async def delete_team_command(inter, role: discord.Role):
+    inter.response.defer(ephemeral=True)
     team_id = slugify(role.name)
 
     try:
@@ -43,4 +50,4 @@ async def delete_team_command(inter: discord.Interaction, role: discord.Role):
 
     asyncio.create_task(update_game_board(inter.client))
 
-    await inter.response.send_message("Team removed!")
+    return await inter.response.send_message("Team removed!", ephemeral=True)

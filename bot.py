@@ -1,31 +1,25 @@
 from __future__ import annotations
 
-import logging
 import os
 
 import discord
 from discord import app_commands
 
+from commands.proofs_command import proofs_command
 from commands.roll_command import roll_dice_command
+from commands.tile_info_command import info_command
 from config import DISCORD_TOKEN
 from db.meta_table import get_channel_ids, set_meta
 from commands.game_commands import (
     complete_command,
-    info_command,
     post_command,
 )
 from game_state import update_game_board
 from commands.member_commands import add_member_command, remove_member_command
 from commands.team_commands import create_team_command, delete_team_command
+from util.logger import log
 
-# ───────────────────────────── logging ────────────────────────────────
-logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(name)s: %(message)s")
-log = logging.getLogger("tile_race_bot")
-
-# ───────────────────────────── discord.py ─────────────────────────────
 intents = discord.Intents.default()
-# Enable privileged members intent **only if** user asked for it and has
-# toggled it on in the Developer Portal (otherwise the gateway disconnects).
 if os.getenv("ENABLE_MEMBERS_INTENT") == "1":
     intents.members = True
 
@@ -40,8 +34,8 @@ cmds = app_commands.CommandTree(bot)
 @app_commands.describe(name="Team name (role name)")
 @app_commands.default_permissions(administrator=True)
 async def create_team(
-    inter: discord.Interaction,
-    name: str,
+        inter: discord.Interaction,
+        name: str,
 ):
     return await create_team_command(inter, name)
 
@@ -50,8 +44,8 @@ async def create_team(
 @app_commands.describe(name="Team name (role name)")
 @app_commands.default_permissions(administrator=True)
 async def delete_team(
-    inter: discord.Interaction,
-    name: discord.Role,
+        inter: discord.Interaction,
+        name: discord.Role,
 ):
     return await delete_team_command(inter, name)
 
@@ -63,9 +57,9 @@ async def delete_team(
 @app_commands.describe(user="User to add", team="Team role to assign")
 @app_commands.default_permissions(administrator=True)
 async def add_member_cmd(
-    inter: discord.Interaction,
-    user: discord.Member,
-    team: discord.Role,
+        inter: discord.Interaction,
+        user: discord.Member,
+        team: discord.Role,
 ):
     return await add_member_command(inter, user, team)
 
@@ -77,9 +71,9 @@ async def add_member_cmd(
 @app_commands.describe(user="User to remove", team="Team to be removed from")
 @app_commands.default_permissions(administrator=True)
 async def remove_member_cmd(
-    inter: discord.Interaction,
-    user: discord.Member,
-    team: discord.Role,
+        inter: discord.Interaction,
+        user: discord.Member,
+        team: discord.Role,
 ):
     return await remove_member_command(inter, user, team)
 
@@ -98,7 +92,7 @@ async def info_cmd(inter: discord.Interaction, tile_nr: int = None):
 
 
 @cmds.command(name="post", description="Upload a screenshot for the current tile")
-@app_commands.describe(proof="Image or short video that shows your progress")
+@app_commands.describe(proof="Image that shows your progress")
 async def post_cmd(inter: discord.Interaction, proof: discord.Attachment):
     return await post_command(inter, proof)
 
@@ -106,6 +100,11 @@ async def post_cmd(inter: discord.Interaction, proof: discord.Attachment):
 @cmds.command(name="complete", description="Complete the current tile for your team")
 async def complete_cmd(inter: discord.Interaction):
     return await complete_command(inter)
+
+
+@cmds.command(name="current-proofs", description="Get proofs of the current tile for your team")
+async def proofs_cmd(inter: discord.Interaction):
+    return await proofs_command(inter)
 
 
 DESIRED = {
