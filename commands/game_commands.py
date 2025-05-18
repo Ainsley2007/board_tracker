@@ -15,8 +15,10 @@ from services.team_service import fetch_team_by_id
 async def post_command(inter: discord.Interaction, proof: discord.Attachment):
     await inter.response.defer(ephemeral=True)
 
-    if not (member := await get_member(inter)): return
-    if not (team := await get_team(inter, member)): return
+    if not (member := await get_member(inter)):
+        return
+    if not (team := await get_team(inter, member)):
+        return
 
     if not team.pending:
         return await inter.followup.send(
@@ -47,8 +49,10 @@ async def post_command(inter: discord.Interaction, proof: discord.Attachment):
 async def complete_command(inter: discord.Interaction):
     await inter.response.defer(ephemeral=True)
 
-    if not (member := await get_member(inter)): return
-    if not (team := await get_team(inter, member)): return
+    if not (member := await get_member(inter)):
+        return
+    if not (team := await get_team(inter, member)):
+        return
 
     if not team.pending:
         await inter.followup.send(
@@ -83,9 +87,9 @@ async def complete_command(inter: discord.Interaction):
 
 
 async def send_proof_embed(
-        inter: discord.Interaction,
-        team_id: str,
-        tile_number: int,
+    inter: discord.Interaction,
+    team_id: str,
+    tile_number: int,
 ):
     proofs_channel_id = get_proofs_channel_id()
     channel = inter.guild.get_channel(proofs_channel_id)
@@ -120,4 +124,6 @@ async def send_proof_embed(
         embed.set_image(url=proof["url"])
         embeds.append(embed)
 
-    await channel.send(embeds=embeds)
+    for i in range(0, len(embeds), 10):
+        batch = embeds[i : i + 10]
+        await channel.send(embeds=batch)

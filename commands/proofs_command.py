@@ -9,8 +9,10 @@ from db.proofs_table import list_proofs
 async def proofs_command(inter: discord.Interaction):
     await inter.response.defer(ephemeral=True)
 
-    if not (member := await get_member(inter)): return
-    if not (team := await get_team(inter, member)): return
+    if not (member := await get_member(inter)):
+        return
+    if not (team := await get_team(inter, member)):
+        return
 
     if not team.pending:
         return await inter.followup.send(
@@ -24,6 +26,7 @@ async def proofs_command(inter: discord.Interaction):
             ephemeral=True,
         )
 
+    # build all embeds
     embeds: list[discord.Embed] = []
     for i, proof in enumerate(proofs, start=1):
         submitter = await inter.guild.fetch_member(proof["user_id"])
@@ -36,4 +39,6 @@ async def proofs_command(inter: discord.Interaction):
         embed.set_image(url=proof["url"])
         embeds.append(embed)
 
-    return await inter.followup.send(embeds=embeds, ephemeral=True)
+    for i in range(0, len(embeds), 10):
+        batch = embeds[i : i + 10]
+        await inter.followup.send(embeds=batch, ephemeral=True)
