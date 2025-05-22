@@ -1,3 +1,4 @@
+from util.logger import log
 import cv2
 from pathlib import Path
 from typing import Dict, List, Tuple
@@ -62,4 +63,4 @@ def paint_team_circles(
             )
 
     cv2.imwrite(out_path, board)
-    print("Saved board overlay →", out_path)
+    log.info(f"Saved board overlay → {out_path}")

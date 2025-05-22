@@ -36,7 +36,7 @@ async def roll_dice_command(inter: discord.Interaction):
     async with lock:
         if team.pending:
             return await inter.followup.send(
-                "Your team already rolled. Complete the tile first!",
+                "Your team has already rolled. Complete the tile first!",
                 ephemeral=True,
             )
 
