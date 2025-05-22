@@ -8,7 +8,7 @@ from util.utils import slugify
 
 
 async def create_team_command(inter, name: str):
-    inter.response.defer(ephemeral=True)
+    await inter.response.defer(ephemeral=True)
 
     guild = inter.guild
     team_id = slugify(name)
@@ -29,6 +29,7 @@ async def create_team_command(inter, name: str):
         return await inter.response.send_message(str(ve), ephemeral=True)
 
     asyncio.create_task(update_game_board(inter.client))
+    log.info(f"Succesfully created the team: {team_id}")
 
     return await inter.response.send_message(
         f"Team **{role.mention}** created!",

@@ -1,14 +1,16 @@
 import discord
 
 from commands.common import get_member, get_team
-from tiles import get_tile
+from services.tiles_service import get_tile
 
 
 async def info_command(inter, tile_id: int):
     await inter.response.defer(ephemeral=True)
 
-    if not (member := await get_member(inter)): return
-    if not (team := await get_team(inter, member)): return
+    if not (member := await get_member(inter)):
+        return
+    if not (team := await get_team(inter, member)):
+        return
 
     if tile_id is not None:
         tile = get_tile(tile_id)
@@ -23,4 +25,3 @@ async def info_command(inter, tile_id: int):
         embed.add_field(name="More info", value=f"<{url}>", inline=False)
 
     return await inter.followup.send(embed=embed)
-

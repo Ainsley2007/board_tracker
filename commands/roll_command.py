@@ -4,7 +4,7 @@ import secrets
 import discord
 
 from commands.common import get_member, get_team
-from db.rolls_table import log_roll
+from db.rolls_table import count_return_landings, log_roll
 from db.teams_table import update_team_position
 from game_state import update_game_board
 from services.member_service import fetch_member
@@ -12,7 +12,7 @@ from services.team_service import (
     fetch_sorted_teams,
     fetch_team_by_id,
 )
-from tiles import get_tile
+from services.tiles_service import get_tile
 
 team_locks: dict[str, asyncio.Lock] = {}
 
@@ -27,8 +27,10 @@ def get_team_lock(slug: str) -> asyncio.Lock:
 async def roll_dice_command(inter: discord.Interaction):
     await inter.response.defer(ephemeral=False)
 
-    if not (member := await get_member(inter)): return
-    if not (team := await get_team(inter, member)): return
+    if not (member := await get_member(inter)):
+        return
+    if not (team := await get_team(inter, member)):
+        return
 
     lock = get_team_lock(team.team_id)
     async with lock:
@@ -75,42 +77,44 @@ def _apply_tile_effect(rolled_pos: int, team_id: str) -> tuple[int, str]:
     return final_pos, ""
 
 
-def _apply_return_tile_effect(tile, rolled_pos, team_id) -> tuple[int, str]:
+def _apply_return_tile_effect(tile, rolled_pos: int, team_id: str) -> tuple[int, str]:
     dest = tile.get("destination_id")
     if dest is None:
-        return rolled_pos, ""  # no return to apply
+        return rolled_pos, ""
 
-    moved_info = f", ↩️ Returned to {dest}"
-    sorted_teams = fetch_sorted_teams()
+    uses = count_return_landings(team_id, rolled_pos)
 
-    # guard against too few teams
-    if len(sorted_teams) < 2:
-        return dest, moved_info
+    teams = fetch_sorted_teams()
+    if teams:
+        leader, last = teams[0], teams[-1]
+        lgap = leader.position - (
+            teams[1].position if len(teams) > 1 else leader.position
+        )
+        lgap = max(lgap, 0)
+        lgap_uses = 2 if team_id == leader.team_id and lgap >= 5 else 1
 
-    last = sorted_teams[-1]
-    second_last = sorted_teams[-2]
-    gap = second_last.position - last.position
+        sgap = (teams[-2].position - last.position) if len(teams) > 1 else 0
+        if team_id == last.team_id and sgap >= 5:
+            return rolled_pos + 1, "Last place by ≥5 tiles; skip return."
 
-    # only skip if you're actually last and gap ≥ 5
-    if last.team_id == team_id and gap >= 5:
-        final = rolled_pos + 1
-        moved_info = " Since you're in last place you skip the return tile."
-        return final, moved_info
+        max_uses = lgap_uses
+    else:
+        max_uses = 1
 
-    return dest, moved_info
+    if uses < max_uses:
+        return dest, f"Returned to {dest}."
+    return rolled_pos + 1, "Return limit reached; skip return."
 
 
 def _apply_skip_tile_effect(tile, rolled_pos, team_id) -> tuple[int, str]:
     dest = tile.get("destination_id")
     if dest is None:
-        return rolled_pos, ""  # nothing to do if no destination
+        return rolled_pos, ""
 
-    # default: skip ahead to dest
     final_pos = dest
     moved_info = f", ⏭️ Skipped to {dest}"
 
-    # fetch standings
-    sorted_teams = fetch_sorted_teams()  # highest-pos first
+    sorted_teams = fetch_sorted_teams()
     if len(sorted_teams) < 2:
         return final_pos, moved_info
 
@@ -118,7 +122,6 @@ def _apply_skip_tile_effect(tile, rolled_pos, team_id) -> tuple[int, str]:
     second = sorted_teams[1]
     gap = leader.position - second.position
 
-    # leader penalty: if you're 1st by ≥5, lose the skip and only advance 1 tile
     if leader.team_id == team_id and gap >= 5:
         final_pos = rolled_pos + 1
         moved_info = " As 1st place with a big lead, you only skip 1 tile."
@@ -148,9 +151,9 @@ async def _send_roll_embed(inter, team, tile_info, die, moved_note):
     embed.set_author(name=team.name)
     role = inter.guild.get_role(team.role_id)
     embed.add_field(name="**Team**", value=role.mention, inline=False)
-    embed.add_field(name="**Tile**", value=tile_info["id"], inline=False)
+    embed.add_field(name="**Tile**", value=f"`{tile_info["id"]}`", inline=False)
     embed.add_field(
-        name="**Description**", value=tile_info["description"], inline=False
+        name="**Description**", value=f"`{tile_info["description"]}`", inline=False
     )
 
     if url := tile_info.get("url"):

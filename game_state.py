@@ -8,7 +8,7 @@ from db.meta_table import (
 )
 from services.member_service import fetch_team_members
 from services.team_service import fetch_teams
-from tiles import get_tile
+from services.tiles_service import get_tile
 
 BOARD_PNG = "assets/board_state.png"
 
@@ -52,15 +52,22 @@ async def update_game_board(bot: discord.Client) -> None:
         embed.add_field(name="", value=role.mention, inline=False)
 
         if team.pending:
-            embed.add_field(name="**Tile**", value=team.position, inline=True)
-            embed.add_field(name="**Assignment**", value=tile["name"], inline=True)
+            embed.add_field(name="**Tile**", value=f"`{team.position}`", inline=True)
+            embed.add_field(
+                name="**Assignment**", value=f"`{tile["name"]}`", inline=True
+            )
         else:
             embed.add_field(
-                name="**Tile**", value="_Your team needs to roll!_", inline=True
+                name="**Tile**", value="`Your team needs to roll!`", inline=True
             )
-            embed.add_field(name="**Assignment**", value="/", inline=True)
+            embed.add_field(name="**Assignment**", value="`/`", inline=True)
 
-        embed.add_field(name="**Members**", value=members_str[:-2])
+        if len(members_str) > 0:
+            members_str = members_str[:-2]
+            members_str = f"`{members_str}`"
+            embed.add_field(name="**Members**", value=members_str)
+        else:
+            embed.add_field(name="**Members**", value="`/`")
 
     if message:
         await message.edit(embed=embed, attachments=[discord.File(BOARD_PNG)])
