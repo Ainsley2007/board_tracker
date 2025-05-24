@@ -154,9 +154,9 @@ async def _send_roll_embed(inter, team, tile_info, die, moved_note):
     embed.set_author(name=team.name)
     role = inter.guild.get_role(team.role_id)
     embed.add_field(name="**Team**", value=role.mention, inline=False)
-    embed.add_field(name="**Tile**", value=f"`{tile_info["id"]}`", inline=False)
+    embed.add_field(name="**Tile**", value=f"`{tile_info['id']}`", inline=False)
     embed.add_field(
-        name="**Description**", value=f"`{tile_info["description"]}`", inline=False
+        name="**Description**", value=f"`{tile_info['description']}`", inline=False
     )
 
     if url := tile_info.get("url"):

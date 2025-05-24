@@ -55,7 +55,7 @@ async def update_game_board(bot: discord.Client) -> None:
         if team.pending:
             embed.add_field(name="**Tile**", value=f"`{team.position}`", inline=True)
             embed.add_field(
-                name="**Assignment**", value=f"`{tile["name"]}`", inline=True
+                name="**Assignment**", value=f"`{tile['name']}`", inline=True
             )
         else:
             embed.add_field(
