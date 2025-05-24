@@ -20,17 +20,17 @@ async def info_command(inter, tile_id: int):
     embed = discord.Embed(title=tile.get("name"))
     embed.add_field(
         name="**Tile**",
-        value=f"`{tile.get("id")}`",
+        value=f"`{tile.get('id')}`",
         inline=False,
     )
     embed.add_field(
         name="**Name**",
-        value=f"`{tile.get("name")}`",
+        value=f"`{tile.get('name')}`",
         inline=False,
     )
     embed.add_field(
         name="**Description**",
-        value=f"`{tile.get("description")}`",
+        value=f"`{tile.get('description')}`",
         inline=False,
     )
 
