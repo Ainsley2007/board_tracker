@@ -95,15 +95,18 @@ def _apply_return_tile_effect(tile, rolled_pos: int, team_id: str) -> tuple[int,
 
         sgap = (teams[-2].position - last.position) if len(teams) > 1 else 0
         if team_id == last.team_id and sgap >= 5:
-            return rolled_pos + 1, "Last place by ≥5 tiles; skip return."
+            return (
+                rolled_pos + 1,
+                " Your team is last place by `≥5` tiles; ignore return.",
+            )
 
         max_uses = lgap_uses
     else:
         max_uses = 1
 
     if uses < max_uses:
-        return dest, f"Returned to {dest}."
-    return rolled_pos + 1, "Return limit reached; skip return."
+        return dest, f" ⏮️ Returned to {dest}."
+    return rolled_pos + 1, " Return limit reached; ignore return."
 
 
 def _apply_skip_tile_effect(tile, rolled_pos, team_id) -> tuple[int, str]:
@@ -124,7 +127,7 @@ def _apply_skip_tile_effect(tile, rolled_pos, team_id) -> tuple[int, str]:
 
     if leader.team_id == team_id and gap >= 5:
         final_pos = rolled_pos + 1
-        moved_info = " As 1st place with a big lead, you only skip 1 tile."
+        moved_info = " You team is first place by `≥5` tiles; ignore skip"
     return final_pos, moved_info
 
 

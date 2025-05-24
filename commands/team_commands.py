@@ -18,7 +18,7 @@ async def create_team_command(inter, name: str):
         name=name,
         colour=role_colour,
         reason="Tile-race team",
-        hoist=True,
+        hoist=False,
     )
 
     try:

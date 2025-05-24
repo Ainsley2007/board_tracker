@@ -18,8 +18,21 @@ async def info_command(inter, tile_id: int):
         tile = get_tile(team.position)
 
     embed = discord.Embed(title=tile.get("name"))
-    embed.add_field(name="**Tile**", value=tile.get("id"), inline=False)
-    embed.add_field(name="**Description**", value=tile.get("description"), inline=False)
+    embed.add_field(
+        name="**Tile**",
+        value=f"`{tile.get("id")}`",
+        inline=False,
+    )
+    embed.add_field(
+        name="**Name**",
+        value=f"`{tile.get("name")}`",
+        inline=False,
+    )
+    embed.add_field(
+        name="**Description**",
+        value=f"`{tile.get("description")}`",
+        inline=False,
+    )
 
     if url := tile.get("url"):
         embed.add_field(name="More info", value=f"<{url}>", inline=False)

@@ -71,7 +71,7 @@
             "id": 11,
             "type": "TILE",
             "name": "Barrows mismatched set",
-            "description": "Obtain a mismatched Barrows set (any Helm, any Body, any Legs, any Weapon)"
+            "description": "Obtain a mismatched Barrows set"
         },
         {
             "id": 12,
@@ -107,7 +107,7 @@
             "id": 17,
             "type": "CHALLENGE",
             "name": "Can't Touch me",
-            "description": "Kill Dharok, Verac, Torag and Guthan without letting them attack you with melee (CA)"
+            "description": "Kill Dharok, Verac, Torag and Guthan without letting them attack you with melee (CA). Enable the 'repeat completion' setting in the osrs settings."
         },
         {
             "id": 18,
@@ -143,7 +143,8 @@
             "id": 23,
             "type": "TILE",
             "name": "Tempoross unique",
-            "description": "Obtain any Tempoross unique except for Spirit flakes, a casket or Soaked pages"
+            "description": "Obtain any Tempoross unique except for Spirit flakes, a casket or Soaked pages",
+            "url": "https://oldschool.runescape.wiki/w/Tempoross#Unique_rewards"
         },
         {
             "id": 24,
@@ -168,13 +169,15 @@
             "id": 27,
             "type": "TILE",
             "name": "Elder chaos robes",
-            "description": "Obtain any piece of Elder chaos robe"
+            "description": "Obtain any piece of Elder chaos robe",
+            "url": "https://oldschool.runescape.wiki/w/Elder_Chaos_druid#Zamorak_robes"
         },
         {
             "id": 28,
             "type": "TILE",
             "name": "Abyssal dye",
-            "description": "Obtain any Guardians of the Rift dye"
+            "description": "Obtain any Guardians of the Rift dye",
+            "url": "https://oldschool.runescape.wiki/w/Rewards_Guardian#Rare_reward_table"
         },
         {
             "id": 29,
@@ -186,7 +189,7 @@
             "id": 30,
             "type": "TILE",
             "name": "Tzhaar weapon or armour",
-            "description": "Obtain any Tzhaar weapon or armour from a TzHaar-Ket",
+            "description": "Obtain any Tzhaar weapon or armour piece from a TzHaar-Ket",
             "url": "https://oldschool.runescape.wiki/w/TzHaar-Ket#Weapons_and_armour_2"
         },
         {
@@ -226,7 +229,7 @@
             "id": 36,
             "type": "TILE",
             "name": "Chambers of Xeric",
-            "description": "Obtain any COX purple"
+            "description": "Obtain any COX purple. !!! NO MEGASCALES USING ALTS !!!"
         },
         {
             "id": 37,
@@ -250,7 +253,7 @@
             "id": 40,
             "type": "CHALLENGE",
             "name": "Egniol Diet II",
-            "description": "Kill the Corrupted Hunllef without making an egniol potion within the Corrupted Gauntlet (CA)"
+            "description": "Kill the Corrupted Hunllef without making an egniol potion within the Corrupted Gauntlet (CA). Enable the 'repeat completion' setting in the osrs settings."
         },
         {
             "id": 41,
@@ -267,7 +270,7 @@
             "id": 43,
             "type": "TILE",
             "name": "Venator bow",
-            "description": "Obtain 5 Venator shards (Don't have to make the bow)"
+            "description": "Obtain 5 Venator shards (you don't have to make the bow)"
         },
         {
             "id": 44,
@@ -320,7 +323,7 @@
             "id": 52,
             "type": "TILE",
             "name": "Chambers of Xeric",
-            "description": "Obtain any COX weapon or shield (Buckler, DHC, Dinny B, Elder maul, Tbow, Claws, Kodai)"
+            "description": "Obtain any COX weapon or shield (Buckler, DHC, Dinny B, Elder maul, Tbow, Claws, Kodai). !!! NO MEGASCALES USING ALTS !!!"
         },
         {
             "id": 53,
@@ -344,7 +347,8 @@
             "id": 56,
             "type": "TILE",
             "name": "Yama",
-            "description": "Obtain any unique from Yama"
+            "description": "Obtain any unique from Yama except for Dossier, Oathplate shards & Forgotten lockbox (armor from lockbox is allowed)",
+            "url": "https://oldschool.runescape.wiki/w/Yama#Unique"
         },
         {
             "id": 57,
@@ -410,7 +414,7 @@
             "id": 67,
             "type": "CHALLENGE",
             "name": "I Would Simply React",
-            "description": "Kill Phosani's Nightmare without allowing your prayer to be disabled (CA)"
+            "description": "Kill Phosani's Nightmare without allowing your prayer to be disabled (CA). Enable the 'repeat completion' setting in the osrs settings."
         },
         {
             "id": 68,
@@ -447,7 +451,7 @@
             "id": 73,
             "type": "TILE",
             "name": "Inferno",
-            "description": "Obtain five infernal capes if only one team member obtains them, four if two members obtain them, and three if three members obtain them."
+            "description": "Gain 15 points in total with this as a guide: \n- 5pts: First Inferno cape per player\n- 3pts: Extra Inferno capes by same player\n- 1 pt: Fire cape"
         },
         {
             "id": 74,
@@ -519,13 +523,13 @@
             "id": 85,
             "type": "CHALLENGE",
             "name": "The Fremennik Way",
-            "description": "Kill Vorkath with only your fists (CA)"
+            "description": "Kill Vorkath with only your fists (CA). Enable the 'repeat completion' setting in the osrs settings."
         },
         {
             "id": 86,
             "type": "TILE",
             "name": "Ancestral",
-            "description": "Obtain any Ancestral robe piece from COX"
+            "description": "Obtain any Ancestral robe piece from COX. !!! NO MEGASCALES USING ALTS !!!"
         },
         {
             "id": 87,
