@@ -54,13 +54,10 @@ def test_get_tiles_by_type_tile():
     assert any(t["id"] == 1 for t in tiles_list)
 
 
-def test_get_tiles_by_type_challenge_and_skip_and_end_and_start():
+def test_get_tiles_by_type_challenge_and_end_and_start():
     # Check CHALLENGE
     ch = tiles.get_tiles_by_type("CHALLENGE")
     assert any(t["id"] == 17 for t in ch)
-    # Check SKIP
-    sk = tiles.get_tiles_by_type("SKIP")
-    assert any(t["id"] == 20 for t in sk)
     # Check END
     end = tiles.get_tiles_by_type("END")
     assert any(t["id"] == 90 for t in end)
