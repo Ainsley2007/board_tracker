@@ -5,7 +5,9 @@ import discord
 
 from commands.common import get_member, get_team
 from db.meta_table import get_proofs_channel_id
+from db.pet_proofs_table import add_pet_proof
 from db.proofs_table import add_proof, list_proof_urls, list_proofs
+from db.teams_table import add_blacklist_charges
 from db.teams_table import clear_pending_flag
 from game_state import update_game_board
 from services.member_service import fetch_member
@@ -26,7 +28,7 @@ async def post_command(inter: discord.Interaction, proof: discord.Attachment):
             ephemeral=True,
         )
 
-    if proof.content_type != "image/jpeg" and proof.content_type != "image/png":
+    if not _is_supported_image(proof):
         return await inter.followup.send(
             "Only png and jpeg are supported.",
             ephemeral=True,
@@ -42,6 +44,48 @@ async def post_command(inter: discord.Interaction, proof: discord.Attachment):
 
     return await inter.followup.send(
         "🖼️ Proof submitted — thanks!",
+        ephemeral=True,
+    )
+
+
+async def post_pet_proof_command(
+    inter: discord.Interaction,
+    proof: discord.Attachment,
+):
+    await inter.response.defer(ephemeral=True)
+
+    if not (member := await get_member(inter)):
+        return
+    team = fetch_team_by_id(member.team_id)
+    if team is None:
+        return await inter.followup.send(
+            "Internal error: your team is missing. Ping an admin.",
+            ephemeral=True,
+        )
+
+    if not _is_supported_image(proof):
+        return await inter.followup.send(
+            "Only png and jpeg are supported.",
+            ephemeral=True,
+        )
+
+    add_pet_proof(
+        team_id=member.team_id,
+        url=proof.url,
+        user_id=inter.user.id,
+        user_name=inter.user.display_name,
+    )
+    charges = add_blacklist_charges(member.team_id, 1)
+    await send_pet_proof_embed(
+        inter=inter,
+        team_id=team.team_id,
+        proof_url=proof.url,
+        submitter_id=inter.user.id,
+    )
+
+    return await inter.followup.send(
+        "🐾 Pet proof submitted. "
+        f"+1 blacklist charge (`{charges}` total).",
         ephemeral=True,
     )
 
@@ -127,3 +171,36 @@ async def send_proof_embed(
     for i in range(0, len(embeds), 10):
         batch = embeds[i : i + 10]
         await channel.send(embeds=batch)
+
+
+async def send_pet_proof_embed(
+    inter: discord.Interaction,
+    team_id: str,
+    proof_url: str,
+    submitter_id: int,
+):
+    proofs_channel_id = get_proofs_channel_id()
+    channel = inter.guild.get_channel(proofs_channel_id)
+    if channel is None:
+        raise RuntimeError("Proofs channel not found")
+
+    team = fetch_team_by_id(team_id)
+    if team is None:
+        return
+    role = inter.guild.get_role(team.role_id)
+    submitter = await inter.guild.fetch_member(submitter_id)
+
+    embed = discord.Embed(
+        title=f"{team.name} — pet proof",
+        description=f"{role.mention if role else team.name}",
+        colour=team.color,
+        timestamp=datetime.now(),
+    )
+    embed.add_field(name="Submitted by", value=submitter.mention, inline=False)
+    embed.set_image(url=proof_url)
+    embed.set_footer(text="OSRS Tile-Race pet proof")
+    await channel.send(embed=embed)
+
+
+def _is_supported_image(proof: discord.Attachment) -> bool:
+    return proof.content_type in {"image/jpeg", "image/png"}

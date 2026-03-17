@@ -15,6 +15,8 @@ class Team:
     position: int
     color: int
     pending: bool
+    blacklist_tiles: list[int]
+    blacklist_charges: int
 
     @classmethod
     def from_doc(cls, doc: dict) -> "Team":
@@ -25,6 +27,8 @@ class Team:
             position=int(doc["pos"]),
             color=int(doc["color"]),
             pending=bool(doc["pending"]),
+            blacklist_tiles=[int(tile) for tile in doc.get("blacklist_tiles", [])],
+            blacklist_charges=int(doc.get("blacklist_charges", 1)),
         )
 
 
