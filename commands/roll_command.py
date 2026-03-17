@@ -71,9 +71,6 @@ def _apply_tile_effect(rolled_pos: int, team_id: str) -> tuple[int, str]:
     if tile_type == "RETURN":
         return _apply_return_tile_effect(tile, rolled_pos, team_id)
 
-    if tile_type == "SKIP":
-        return _apply_skip_tile_effect(tile, rolled_pos, team_id)
-
     return final_pos, ""
 
 
@@ -108,27 +105,6 @@ def _apply_return_tile_effect(tile, rolled_pos: int, team_id: str) -> tuple[int,
         return dest, f" ⏮️ Returned to {dest}."
     return rolled_pos + 1, " Return limit reached; ignore return."
 
-
-def _apply_skip_tile_effect(tile, rolled_pos, team_id) -> tuple[int, str]:
-    dest = tile.get("destination_id")
-    if dest is None:
-        return rolled_pos, ""
-
-    final_pos = dest
-    moved_info = f", ⏭️ Skipped to {dest}"
-
-    sorted_teams = fetch_sorted_teams()
-    if len(sorted_teams) < 2:
-        return final_pos, moved_info
-
-    leader = sorted_teams[0]
-    second = sorted_teams[1]
-    gap = leader.position - second.position
-
-    if leader.team_id == team_id and gap >= 5:
-        final_pos = rolled_pos + 1
-        moved_info = " You team is first place by `≥5` tiles; ignore skip"
-    return final_pos, moved_info
 
 
 async def _update_state(team_id, old_pos, final_pos, die, user, bot):
