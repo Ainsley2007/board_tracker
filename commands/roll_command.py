@@ -4,12 +4,12 @@ import secrets
 import discord
 
 from commands.common import get_member, get_team
-from db.rolls_table import count_return_landings, log_roll
+from db.rolls_table import log_roll
+from db.teams_table import add_blacklist_charges
 from db.teams_table import update_team_position
 from game_state import update_game_board
 from services.member_service import fetch_member
 from services.team_service import (
-    fetch_sorted_teams,
     fetch_team_by_id,
 )
 from services.tiles_service import get_tile
@@ -64,46 +64,62 @@ def _roll_die(position):
 
 
 def _apply_tile_effect(rolled_pos: int, team_id: str) -> tuple[int, str]:
-    tile = get_tile(rolled_pos) or {}
-    tile_type = tile.get("type")
     final_pos = rolled_pos
+    notes: list[str] = []
 
-    if tile_type == "RETURN":
+    for _ in range(20):
+        redirected_pos, blacklist_note = _apply_blacklist_redirect(final_pos, team_id)
+        if redirected_pos != final_pos:
+            final_pos = redirected_pos
+            if blacklist_note:
+                notes.append(blacklist_note)
+            continue
+
+        effected_pos, effect_note = _apply_primary_tile_effect(final_pos, team_id)
+        if effected_pos != final_pos:
+            final_pos = effected_pos
+            if effect_note:
+                notes.append(effect_note)
+            continue
+        break
+
+    return final_pos, "".join(notes)
+
+
+def _apply_primary_tile_effect(rolled_pos: int, team_id: str) -> tuple[int, str]:
+    tile = get_tile(rolled_pos) or {}
+    if tile.get("type") == "RETURN":
         return _apply_return_tile_effect(tile, rolled_pos, team_id)
-
-    return final_pos, ""
+    return rolled_pos, ""
 
 
 def _apply_return_tile_effect(tile, rolled_pos: int, team_id: str) -> tuple[int, str]:
     dest = tile.get("destination_id")
     if dest is None:
         return rolled_pos, ""
+    charges = add_blacklist_charges(team_id, 1)
+    return dest, f" ⏮️ Returned to {dest}. +1 blacklist charge ({charges})."
 
-    uses = count_return_landings(team_id, rolled_pos)
 
-    teams = fetch_sorted_teams()
-    if teams:
-        leader, last = teams[0], teams[-1]
-        lgap = leader.position - (
-            teams[1].position if len(teams) > 1 else leader.position
-        )
-        lgap = max(lgap, 0)
-        lgap_uses = 2 if team_id == leader.team_id and lgap >= 5 else 1
+def _apply_blacklist_redirect(position: int, team_id: str) -> tuple[int, str]:
+    team = fetch_team_by_id(team_id)
+    if team is None or not team.blacklist_tiles:
+        return position, ""
+    if position >= 90:
+        return position, ""
 
-        sgap = (teams[-2].position - last.position) if len(teams) > 1 else 0
-        if team_id == last.team_id and sgap >= 5:
-            return (
-                rolled_pos + 1,
-                " Your team is last place by `≥5` tiles; ignore return.",
-            )
+    steps = 0
+    final_pos = position
+    blacklisted = set(team.blacklist_tiles)
+    while final_pos in blacklisted and final_pos < 90:
+        final_pos = min(final_pos + 1, 90)
+        steps += 1
 
-        max_uses = lgap_uses
-    else:
-        max_uses = 1
-
-    if uses < max_uses:
-        return dest, f" ⏮️ Returned to {dest}."
-    return rolled_pos + 1, " Return limit reached; ignore return."
+    if steps == 0:
+        return final_pos, ""
+    if steps == 1:
+        return final_pos, f" 🚫 Blacklist hit, moved to {final_pos}."
+    return final_pos, f" 🚫 Blacklist chain skipped {steps} tiles to {final_pos}."
 
 
 
@@ -122,6 +138,8 @@ async def _update_state(team_id, old_pos, final_pos, die, user, bot):
 
 async def _send_roll_embed(inter, team, tile_info, die, moved_note):
     colour = discord.Colour(team.color) if team.color else discord.Colour.gold()
+    tile_id = tile_info.get("id", team.position)
+    description = tile_info.get("description", "No tile description available.")
     embed = discord.Embed(
         title=f"🎲 {inter.user.display_name} rolled a {die}!{moved_note}",
         colour=colour,
@@ -130,9 +148,9 @@ async def _send_roll_embed(inter, team, tile_info, die, moved_note):
     embed.set_author(name=team.name)
     role = inter.guild.get_role(team.role_id)
     embed.add_field(name="**Team**", value=role.mention, inline=False)
-    embed.add_field(name="**Tile**", value=f"`{tile_info['id']}`", inline=False)
+    embed.add_field(name="**Tile**", value=f"`{tile_id}`", inline=False)
     embed.add_field(
-        name="**Description**", value=f"`{tile_info['description']}`", inline=False
+        name="**Description**", value=f"`{description}`", inline=False
     )
 
     if url := tile_info.get("url"):

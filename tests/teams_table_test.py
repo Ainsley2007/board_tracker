@@ -4,15 +4,18 @@ from discord import Colour
 
 import db.teams_table as tt
 from db.teams_table import (
+    add_blacklist_tile,
+    add_blacklist_charges,
     add_team,
+    consume_blacklist_charge,
+    get_blacklist_charges,
+    get_blacklist_tiles,
+    replace_blacklist_tile,
     remove_team,
     get_team,
     get_teams,
     clear_pending_flag,
     update_team_position,
-    has_returned,
-    mark_returned,
-    RETURN_TILES,
 )
 
 
@@ -33,7 +36,8 @@ def test_add_and_get_team():
     assert row["role_id"] == 42
     assert row["pos"] == 0
     assert row["pending"] is False
-    assert row["return_mask"] == 0
+    assert row["blacklist_tiles"] == []
+    assert row["blacklist_charges"] == 1
 
 
 def test_remove_team():
@@ -64,32 +68,22 @@ def test_update_and_clear_pending():
     assert row["pending"] is False
 
 
-def test_mark_and_has_returned_single():
+def test_blacklist_tile_set_and_get():
     add_team("Delta", "delta", 8, Colour.purple())
-    slug = "delta"
-    first_tile = RETURN_TILES[0]
-    # initially not returned
-    assert has_returned(slug, first_tile) is False
-    # mark it
-    mark_returned(slug, first_tile)
-    assert has_returned(slug, first_tile) is True
-    # other return tiles still False
-    assert has_returned(slug, RETURN_TILES[1]) is False
+    assert get_blacklist_tiles("delta") == []
+    add_blacklist_tile("delta", 33)
+    assert get_blacklist_tiles("delta") == [33]
+    replace_blacklist_tile("delta", 33, 36)
+    assert get_blacklist_tiles("delta") == [36]
 
 
-def test_mark_multiple_and_mask_value():
+def test_blacklist_charge_flow():
     add_team("Echo", "echo", 9, Colour.teal())
-    slug = "echo"
-    t0, t1 = RETURN_TILES[0], RETURN_TILES[1]
-    mark_returned(slug, t0)
-    mark_returned(slug, t1)
-    row = get_team(slug)
-    mask = row["return_mask"]
-    # bit 0 and bit 1 set → mask == 1<<0 | 1<<1 == 3
-    assert mask == ((1 << 0) | (1 << 1))
-    # has_returned reflects both
-    assert has_returned(slug, t0) is True
-    assert has_returned(slug, t1) is True
+    assert get_blacklist_charges("echo") == 1
+    assert consume_blacklist_charge("echo") == 0
+    assert consume_blacklist_charge("echo") is None
+    assert add_blacklist_charges("echo", 2) == 2
+    assert get_blacklist_charges("echo") == 2
 
 
 def test_clear_pending_on_nonexistent():

@@ -8,10 +8,12 @@ from discord import app_commands
 from commands.proofs_command import proofs_command
 from commands.roll_command import roll_dice_command
 from commands.tile_info_command import info_command
+from commands.blacklist_commands import blacklist_command, change_blacklist_command
 from config import DISCORD_TOKEN
 from db.meta_table import get_channel_ids, set_meta
 from commands.game_commands import (
     complete_command,
+    post_pet_proof_command,
     post_command,
 )
 from game_state import update_game_board
@@ -97,6 +99,17 @@ async def post_cmd(inter: discord.Interaction, proof: discord.Attachment):
     return await post_command(inter, proof)
 
 
+@cmds.command(name="post-pet-proof", description="Upload pet proof and gain one blacklist charge")
+@app_commands.describe(
+    proof="Image that shows your pet drop",
+)
+async def post_pet_proof_cmd(
+        inter: discord.Interaction,
+        proof: discord.Attachment,
+):
+    return await post_pet_proof_command(inter, proof)
+
+
 @cmds.command(name="complete", description="Complete the current tile for your team")
 async def complete_cmd(inter: discord.Interaction):
     return await complete_command(inter)
@@ -107,8 +120,27 @@ async def proofs_cmd(inter: discord.Interaction):
     return await proofs_command(inter)
 
 
+@cmds.command(name="blacklist", description="Add a future tile to your team's blacklist")
+@app_commands.describe(tile_nr="Tile number to blacklist")
+async def blacklist_cmd(inter: discord.Interaction, tile_nr: int):
+    return await blacklist_command(inter, tile_nr)
+
+
+@cmds.command(name="change-blacklist", description="Replace one blacklisted tile with another")
+@app_commands.describe(
+    old_tile_nr="Existing blacklisted tile to replace",
+    new_tile_nr="New tile number to blacklist",
+)
+async def change_blacklist_cmd(
+        inter: discord.Interaction,
+        old_tile_nr: int,
+        new_tile_nr: int,
+):
+    return await change_blacklist_command(inter, old_tile_nr, new_tile_nr)
+
+
 DESIRED = {
-    "category": "╔═══Tile race 2025═══╗",
+    "category": "╔═══Tile race 2026═══╗",
     "board": "tr-board",
     "proofs": "tr-proofs",
     "cmd": "tr-commands",
@@ -133,15 +165,17 @@ async def ensure_tile_race_channels(guild: discord.Guild):
     ids = get_channel_ids()
 
     cat_id = ids.get("category")
-    category = await guild.fetch_channel(cat_id) if cat_id else None
+    category = await _fetch_channel_or_none(guild, cat_id)
 
     if category is None:
         category = await guild.create_category(DESIRED["category"])
+    elif category.name != DESIRED["category"]:
+        await category.edit(name=DESIRED["category"])
 
     set_meta("tr_category_id", category.id)
 
     async def need(name_key):
-        chan = await guild.fetch_channel(ids[name_key]) if ids[name_key] else None
+        chan = await _fetch_channel_or_none(guild, ids.get(name_key))
         if chan is None:
             chan = await guild.create_text_channel(
                 DESIRED[name_key],
@@ -156,6 +190,18 @@ async def ensure_tile_race_channels(guild: discord.Guild):
     await need("cmd")
 
     await update_game_board(bot)
+
+
+async def _fetch_channel_or_none(
+        guild: discord.Guild,
+        channel_id: int | None,
+):
+    if not channel_id:
+        return None
+    try:
+        return await guild.fetch_channel(channel_id)
+    except discord.NotFound:
+        return None
 
 
 if __name__ == "__main__":
