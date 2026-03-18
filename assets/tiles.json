@@ -15,7 +15,7 @@
             "id": 2,
             "type": "TILE",
             "name": "Scurrius spines",
-            "description": "Obtain 3 scurrius spines from Scurrius"
+            "description": "Obtain 4 scurrius spines from Scurrius"
         },
         {
             "id": 3,
@@ -27,7 +27,7 @@
             "id": 4,
             "type": "TILE",
             "name": "Glacial temotli",
-            "description": "Obtain 3 pairs of Glacial temotli"
+            "description": "Obtain 4 pairs of Glacial temotli"
         },
         {
             "id": 5,
@@ -39,12 +39,12 @@
             "id": 6,
             "type": "TILE",
             "name": "Vorkath head",
-            "description": "Obtain 4 Vorkath heads from Vorkath"
+            "description": "Obtain 5 Vorkath heads from Vorkath"
         },
         {
             "id": 7,
             "type": "TILE",
-            "name": "Berserker ring",
+            "name": "Brutus",
             "description": "Obtain 1 Berserker ring from Dagannoth Rex"
         },
         {
