@@ -2,8 +2,8 @@
     "tiles": [
         {
             "id": 0,
-            "name": "Start",
-            "type": "START"
+            "type": "START",
+            "name": "Start"
         },
         {
             "id": 1,
@@ -39,13 +39,13 @@
             "id": 6,
             "type": "TILE",
             "name": "Vorkath head",
-            "description": "Obtain 5 Vorkath heads from Vorkath"
+            "description": "Obtain 4 Vorkath heads from Vorkath"
         },
         {
             "id": 7,
             "type": "TILE",
             "name": "Brutus",
-            "description": "Obtain 1 Berserker ring from Dagannoth Rex"
+            "description": "Obtain 4 cow slippers OR Beef (pet)"
         },
         {
             "id": 8,
@@ -57,14 +57,15 @@
         {
             "id": 9,
             "type": "TILE",
-            "name": "Archers ring",
-            "description": "Obtain 1 Archers ring from Dagannoth Supreme"
+            "name": "5 Easy clue scroll uniques",
+            "description": "Obtain 5 easy clue scroll uniques from the easy casket uniques table",
+            "url": "https://oldschool.runescape.wiki/w/Reward_casket_(easy)#Easy_clue_uniques"
         },
         {
             "id": 10,
             "type": "TILE",
-            "name": "Seers ring",
-            "description": "Obtain 1 Seers ring from Dagannoth Prime"
+            "name": "Chambers of Xeric",
+            "description": "Gain 40 points in total with this as a guide:\n- 40 pts: Any Purple drop (Instant Clear)\n- 20 pts: CoX completion with 7+ team members\n- 10 pts: CoX completion with 3 to 6 team members\n- 2 pts: CoX completion with 1 to 2 team members\n- Mandatory: Screenshot of the final chest/chatbox showing all team members and completion time"
         },
         {
             "id": 11,
@@ -75,8 +76,8 @@
         {
             "id": 12,
             "type": "TILE",
-            "name": "Tome of earth",
-            "description": "Obtain a Tome of earth from The HueyCoatl"
+            "name": "Sarachnis cudgel",
+            "description": "Obtain a Sarachnis cudgel from Sarachnis"
         },
         {
             "id": 13,
@@ -93,14 +94,14 @@
         {
             "id": 15,
             "type": "TILE",
-            "name": "Sarachnis cudgel",
-            "description": "Obtain a Sarachnis cudgel from Sarachnis"
+            "name": "Theatre of Blood",
+            "description": "Gain 30 points in total with this as a guide:\n- 30 pts: Any Purple drop (Instant Clear)\n- 2 pts: Base ToB completion\n- 3 pts: Per UNIQUE team member that completes a raid (tracked across all submissions)\n- Mandatory: Screenshot of the MVP board/chest room showing all participating members"
         },
         {
             "id": 16,
             "type": "TILE",
-            "name": "Zombie axe",
-            "description": "Obtain a Zombie axe from the Armoured zombies"
+            "name": "Money Tile",
+            "description": "Obtain 5m or more in loot (min. 1m per proof, valued at time of drop)"
         },
         {
             "id": 17,
@@ -123,20 +124,21 @@
         },
         {
             "id": 20,
-            "type": "SKIP",
-            "destination_id": 26
+            "type": "TILE",
+            "name": "Tombs of Amascut",
+            "description": "Obtain any TOA purple"
         },
         {
             "id": 21,
             "type": "TILE",
-            "name": "Dragon hunter wand",
-            "description": "Obtain a Dragon hunter wand from The Hueycoatl"
+            "name": "Lord of The Rings",
+            "description": "Obtain all of the DKS rings once"
         },
         {
             "id": 22,
             "type": "TILE",
             "name": "Fire capes",
-            "description": "Obtain one fire cape per teammate"
+            "description": "Gain 9 points in total with this as a guide:\n- 1 pt: Fire Cape completion\n- 1 bonus pt: If the completion time is below 35 minutes\n- Mandatory: Screenshot of the chatbox showing the completion time and character name"
         },
         {
             "id": 23,
@@ -153,30 +155,28 @@
         {
             "id": 25,
             "type": "TILE",
+            "name": "Chambers of Xeric",
+            "description": "Obtain any COX purple. !!! NO MEGASCALES USING ALTS !!!"
+        },
+        {
+            "id": 26,
+            "type": "TILE",
             "name": "Medium Scroll uniques",
             "description": "Obtain 4 medium clue scroll uniques from the medium casket uniques table",
             "url": "https://oldschool.runescape.wiki/w/Reward_casket_(medium)#Medium_clue_uniques"
         },
         {
-            "id": 26,
-            "type": "TILE",
-            "name": "Zalcano unique",
-            "description": "Obtain any Zalcano unique item",
-            "url": "https://oldschool.runescape.wiki/w/Zalcano#Tertiary"
-        },
-        {
             "id": 27,
             "type": "TILE",
-            "name": "Elder chaos robes",
-            "description": "Obtain any piece of Elder chaos robe",
+            "name": "Shellbane gryphon",
+            "description": "Obtain a Belle's folly (tarnished) from the Shellbane gryphon",
             "url": "https://oldschool.runescape.wiki/w/Elder_Chaos_druid#Zamorak_robes"
         },
         {
             "id": 28,
             "type": "TILE",
-            "name": "Abyssal dye",
-            "description": "Obtain any Guardians of the Rift dye",
-            "url": "https://oldschool.runescape.wiki/w/Rewards_Guardian#Rare_reward_table"
+            "name": "The Hueycoatl",
+            "description": "Obtain any unique from The Hueycoatl"
         },
         {
             "id": 29,
@@ -187,29 +187,28 @@
         {
             "id": 30,
             "type": "TILE",
+            "name": "Theatre of Blood",
+            "description": "Obtain any TOB purple"
+        },
+        {
+            "id": 31,
+            "type": "TILE",
             "name": "Tzhaar weapon or armour",
             "description": "Obtain any Tzhaar weapon or armour piece from a TzHaar-Ket",
             "url": "https://oldschool.runescape.wiki/w/TzHaar-Ket#Weapons_and_armour_2"
         },
         {
-            "id": 31,
-            "type": "TILE",
-            "name": "Dragon chainbody",
-            "description": "Obtain a Dragon chainbody",
-            "url": "https://oldschool.runescape.wiki/w/Dragon_chainbody#Item_sources"
-        },
-        {
             "id": 32,
             "type": "TILE",
-            "name": "Dragon limbs",
-            "description": "Obtain Dragon limbs from metal dragons",
-            "url": "https://oldschool.runescape.wiki/w/Dragon_limbs#Item_sources"
+            "name": "Abyssal Sire",
+            "description": "Obtain 5 Unsired"
         },
         {
             "id": 33,
             "type": "TILE",
-            "name": "Tombs of Amascut",
-            "description": "Obtain any TOA purple"
+            "name": "3 hard clue uniques",
+            "description": "Obtain 3 hard clue scroll uniques from the hard casket uniques table",
+            "url": "https://oldschool.runescape.wiki/w/Reward_casket_(hard)#Hard_clue_uniques"
         },
         {
             "id": 34,
@@ -220,21 +219,20 @@
         {
             "id": 35,
             "type": "TILE",
-            "name": "3 hard clue uniques",
-            "description": "Obtain 3 hard clue scroll uniques from the hard casket uniques table",
-            "url": "https://oldschool.runescape.wiki/w/Reward_casket_(hard)#Hard_clue_uniques"
+            "name": "Tombs of Amascut",
+            "description": "Obtain any TOA purple"
         },
         {
             "id": 36,
             "type": "TILE",
-            "name": "Chambers of Xeric",
-            "description": "Obtain any COX purple. !!! NO MEGASCALES USING ALTS !!!"
+            "name": "Money Tile",
+            "description": "Obtain 10m or more in loot (min. 2m per proof, valued at time of drop)"
         },
         {
             "id": 37,
             "type": "TILE",
-            "name": "Bandos hilt",
-            "description": "Obtain a Bandos hilt from General Graardor"
+            "name": "General Graardor",
+            "description": "Obtain a Bandos hilt OR 2 pieces of Bandos armour"
         },
         {
             "id": 38,
@@ -245,8 +243,8 @@
         {
             "id": 39,
             "type": "TILE",
-            "name": "Theatre of Blood",
-            "description": "Obtain any TOB purple"
+            "name": "Chambers of Xeric",
+            "description": "Obtain any COX purple. !!! NO MEGASCALES USING ALTS !!!"
         },
         {
             "id": 40,
@@ -257,13 +255,14 @@
         {
             "id": 41,
             "type": "TILE",
-            "name": "Tormented synapse",
-            "description": "Obtain a Tormented synapse from Tormented demons"
+            "name": "Kree'arra",
+            "description": "Obtain an Armadyl hilt OR 2 pieces of Armadyl armour"
         },
         {
             "id": 42,
-            "type": "SKIP",
-            "destination_id": 47
+            "type": "TILE",
+            "name": "Kraken",
+            "description": "Obtain a Trident of the seas (full) from Kraken"
         },
         {
             "id": 43,
@@ -274,14 +273,14 @@
         {
             "id": 44,
             "type": "TILE",
-            "name": "Voidwaker blade",
-            "description": "Obtain a Voidwaker blade from either Calvar'ion or Vet'ion"
+            "name": "Calvar'in/Vet'ion",
+            "description": "Obtain a Voidwaker blade OR 2 other uniques from either Calvar'ion or Vet'ion"
         },
         {
             "id": 45,
             "type": "TILE",
-            "name": "Armadyl hilt",
-            "description": "Obtain an Armadyl hilt from Kree'arra"
+            "name": "Theatre of Blood",
+            "description": "Obtain any TOB purple"
         },
         {
             "id": 46,
@@ -291,8 +290,8 @@
         {
             "id": 47,
             "type": "TILE",
-            "name": "Zamorak hilt",
-            "description": "Obtain a Zamorak hilt from K'ril Tsutsaroth"
+            "name": "K'ril Tsutsaroth",
+            "description": "Obtain a Zamorak hilt OR 3 other uniques from K'ril Tsutsaroth"
         },
         {
             "id": 48,
@@ -303,32 +302,32 @@
         {
             "id": 49,
             "type": "TILE",
-            "name": "Voidwaker gem",
-            "description": "Obtain a Voidwaker gem from either Spindel or Venenatis"
+            "name": "Spindel/Venenatis",
+            "description": "Obtain a Voidwaker gem OR 2 other uniques from either Spindel or Venenatis"
         },
         {
             "id": 50,
+            "type": "TILE",
+            "name": "Tombs of Amascut",
+            "description": "Obtain any TOA purple"
+        },
+        {
+            "id": 51,
             "type": "TILE",
             "name": "Enhanced or armour seeds",
             "description": "Obtain an Enhanced crystal weapon seed or 4 Crystal armour seeds from The (corrupted) Gauntlet"
         },
         {
-            "id": 51,
-            "type": "TILE",
-            "name": "Tombs of Amascut",
-            "description": "Obtain any TOA weapon or shield (Fang, Shadow, Ward)"
-        },
-        {
             "id": 52,
             "type": "TILE",
-            "name": "Chambers of Xeric",
-            "description": "Obtain any COX weapon or shield (Buckler, DHC, Dinny B, Elder maul, Tbow, Claws, Kodai). !!! NO MEGASCALES USING ALTS !!!"
+            "name": "The Nightmare",
+            "description": "Obtain any unique from The (Phosani's) Nightmare"
         },
         {
             "id": 53,
             "type": "TILE",
-            "name": "Bellator vestige",
-            "description": "Obtain a Bellator vestige from the Whisperer"
+            "name": "Whisperer",
+            "description": "Obtain a Bellator vestige OR any Virtus armour piece from the Whisperer"
         },
         {
             "id": 54,
@@ -339,8 +338,8 @@
         {
             "id": 55,
             "type": "TILE",
-            "name": "The Nightmare",
-            "description": "Obtain any unique from The (Phosani's) Nightmare"
+            "name": "Chambers of Xeric",
+            "description": "Obtain any COX purple"
         },
         {
             "id": 56,
@@ -352,14 +351,14 @@
         {
             "id": 57,
             "type": "TILE",
-            "name": "Voidwaker hilt",
-            "description": "Obtain a Voidwaker hilt from either Callisto or Artio"
+            "name": "Artio/Callisto",
+            "description": "Obtain a Voidwaker hilt OR 2 other uniques from either Callisto or Artio"
         },
         {
             "id": 58,
             "type": "TILE",
-            "name": "Ultor vestige",
-            "description": "Obtain an Ultor vestige from Vardorvis"
+            "name": "Vardorvis",
+            "description": "Obtain an Ultor vestige OR any other unique (except ingot) from Vardorvis"
         },
         {
             "id": 59,
@@ -370,21 +369,20 @@
         {
             "id": 60,
             "type": "TILE",
-            "name": "Revenant unique",
-            "description": "Obtain any revenant unique",
-            "url": "https://oldschool.runescape.wiki/w/Revenant_ork#Unique"
+            "name": "Theatre of Blood",
+            "description": "Obtain any TOB purple"
         },
         {
             "id": 61,
             "type": "TILE",
-            "name": "Saradomin hilt",
-            "description": "Obtain a Saradomin hilt from Commander Zilyana"
+            "name": "Commander Zilyana",
+            "description": "Obtain a Saradomin hilt OR 3 other uniques from Commander Zilyana"
         },
         {
             "id": 62,
             "type": "TILE",
-            "name": "Theatre of Blood",
-            "description": "Obtain any TOB weapon or shield (Avernic, Rapier, Sanguinesti, Scythe)"
+            "name": "Zulrah",
+            "description": "Obtain a Zulrah fang"
         },
         {
             "id": 63,
@@ -394,20 +392,21 @@
         },
         {
             "id": 64,
-            "type": "SKIP",
-            "destination_id": 68
+            "type": "TILE",
+            "name": "Doom of Mokhaiotl",
+            "description": "Obtain any Unique from the Doom of Mokhaiotl"
         },
         {
             "id": 65,
             "type": "TILE",
-            "name": "Venator vestige",
-            "description": "Obtain a Venator vestige from the Leviathan"
+            "name": "Tombs of Amascut",
+            "description": "Obtain any weapon or shield from the tombs of amascut(Shadow, Ward, Fang)"
         },
         {
             "id": 66,
             "type": "TILE",
-            "name": "Wards",
-            "description": "Complete both the Malediction ward and Odium ward (don't have to combine the pieces)"
+            "name": "Money Tile",
+            "description": "Obtain 25m or more in loot (min. 5m per proof, valued at time of drop)"
         },
         {
             "id": 67,
@@ -418,21 +417,20 @@
         {
             "id": 68,
             "type": "TILE",
-            "name": "Ancient statuette",
-            "description": "Obtain any Ancient statuette from Revenants or Bounty hunter",
-            "url": "https://oldschool.runescape.wiki/w/Revenant_ork#Ancient_statuettes"
+            "name": "Venator vestige",
+            "description": "Obtain a Venator vestige OR any other unique (except ingot) from the Leviathan"
         },
         {
             "id": 69,
             "type": "TILE",
-            "name": "Pharaoh's sceptre",
-            "description": "Obtain 3 Pharaoh's sceptres from the Pyramid plunder minigame"
+            "name": "Sunfire fanatic armour",
+            "description": "Obtain any Sunfire fanatic armour piece from the Colosseum"
         },
         {
             "id": 70,
             "type": "TILE",
-            "name": "Sunfire fanatic armour",
-            "description": "Obtain any Sunfire fanatic armour piece from the Colosseum"
+            "name": "Chambers of Xeric",
+            "description": "Obtain any COX weapon or shield (Buckler, DHC, Dinny B, Elder maul, Tbow, Claws, Kodai). !!! NO MEGASCALES USING ALTS !!!"
         },
         {
             "id": 71,
@@ -461,14 +459,14 @@
         {
             "id": 75,
             "type": "TILE",
-            "name": "Magus vestige",
-            "description": "Obtain a Magus vestige from Duke Sucellus"
+            "name": "Theatre of Blood",
+            "description": "Obtain any TOB Weapon or Shield (Avernic, Rapier, Sanguinesti, Scythe)"
         },
         {
             "id": 76,
             "type": "TILE",
-            "name": "Golden tench",
-            "description": "Obtain a Golden tench from aerial fishing at Lake Molch"
+            "name": "Magus vestige",
+            "description": "Obtain a Magus vestige OR any other unique (except ingot) from Duke Sucellus"
         },
         {
             "id": 77,
@@ -478,27 +476,27 @@
         },
         {
             "id": 78,
-            "type": "SKIP",
-            "destination_id": 82
+            "type": "TILE",
+            "name": "Raids",
+            "description": "Get any purple from a raid of your choice"
         },
         {
             "id": 79,
             "type": "TILE",
-            "name": "Pet",
-            "description": "Obtain a Boss or Skilling pet except for: Skotos and chaos elemental",
-            "url": "https://pastebin.com/tuMHhew5"
+            "name": "Doom of Mokhaiotl",
+            "description": "Obtain any Unique from the Doom of Mokhaiotl"
         },
         {
             "id": 80,
             "type": "TILE",
-            "name": "Dragon warhammer",
-            "description": "Obtain a Dragon warhammer from Lizardman shamans"
+            "name": "Chambers of Xeric: Challenge Mode",
+            "description": "Obtain a Metamorphic dust OR Twisted ancestral colour kit"
         },
         {
             "id": 81,
             "type": "TILE",
-            "name": "Jar",
-            "description": "Obtain any boss jar except for: Jar of darkness"
+            "name": "Money Tile",
+            "description": "Obtain 50m or more in loot (min. 10m per proof, valued at time of drop)"
         },
         {
             "id": 82,
@@ -528,7 +526,7 @@
             "id": 86,
             "type": "TILE",
             "name": "Ancestral",
-            "description": "Obtain any Ancestral robe piece from COX. !!! NO MEGASCALES USING ALTS !!!"
+            "description": "Obtain any Ancestral robe piece OR Twisted ancestral colour kit from COX. !!! NO MEGASCALES USING ALTS !!!"
         },
         {
             "id": 87,
