@@ -1,0 +1,18 @@
+services:
+  tile-race-bot:
+    build: .
+    image: tile-race-bot:latest
+    container_name: tile-race-bot
+    restart: unless-stopped
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - ADMIN_USER_ID=${ADMIN_USER_ID}
+      - DB_PATH=/app/data/state.json
+      - BOARD_PNG=/app/data/board_state.png
+    volumes:
+      - tile-race-data:/app/data
+    stdin_open: true
+    tty: true
+
+volumes:
+  tile-race-data:

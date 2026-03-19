@@ -7,6 +7,7 @@ BOARD_MESSAGE_ID = "tr_board_msg_id"
 
 PROOFS_CHANNEL_ID = "tr_proofs_id"
 COMMANDS_CHANNEL_ID = "tr_cmd_id"
+RACE_STARTED_KEY = "tr_race_started"
 
 meta_table = db.table("meta")
 
@@ -46,3 +47,14 @@ def set_board_message_id(msg_id: int) -> None:
 
 def get_board_message_id() -> int | None:
     return get_meta(BOARD_MESSAGE_ID)
+
+
+def is_race_started() -> bool:
+    v = get_meta(RACE_STARTED_KEY)
+    if v is None:
+        return False
+    return bool(v)
+
+
+def set_race_started(started: bool) -> None:
+    set_meta(RACE_STARTED_KEY, started)

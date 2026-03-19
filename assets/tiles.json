@@ -65,7 +65,7 @@
             "id": 10,
             "type": "TILE",
             "name": "Chambers of Xeric",
-            "description": "Gain 40 points in total with this as a guide:\n- 40 pts: Any Purple drop (Instant Clear)\n- 20 pts: CoX completion with 7+ team members\n- 10 pts: CoX completion with 3 to 6 team members\n- 2 pts: CoX completion with 1 to 2 team members\n- Mandatory: Screenshot of the final chest/chatbox showing all team members and completion time"
+            "description": "Gain 40 points in total with this as a guide:\n- 40 pts: Any Purple drop (Instant Clear)\n- 20 pts: CoX completion with 7+ team members\n- 10 pts: CoX completion with 3 to 6 team members\n- 2 pts: CoX completion with 1 to 2 team members\n- Two smaller teams (3–6 or 1–2 members) may not run CoX at the same time\n- Mandatory: Screenshot of the final chest/chatbox showing all team members and completion time"
         },
         {
             "id": 11,
@@ -262,7 +262,7 @@
             "id": 42,
             "type": "TILE",
             "name": "Kraken",
-            "description": "Obtain a Trident of the seas (full) from Kraken"
+            "description": "Obtain 2 items from Kraken in total, each may be either a Trident of the seas (full) or a Kraken tentacle (e.g. 2 tridents, 2 tentacles, or 1 of each)"
         },
         {
             "id": 43,
@@ -448,7 +448,7 @@
             "id": 73,
             "type": "TILE",
             "name": "Inferno",
-            "description": "Gain 15 points in total with this as a guide: \n- 5pts: First Inferno cape per player\n- 3pts: Extra Inferno capes by same player\n- 1 pt: Fire cape"
+            "description": "Obtain 3 Inferno capes"
         },
         {
             "id": 74,
@@ -518,15 +518,15 @@
         },
         {
             "id": 85,
-            "type": "CHALLENGE",
-            "name": "The Fremennik Way",
-            "description": "Kill Vorkath with only your fists (CA). Enable the 'repeat completion' setting in the osrs settings."
+            "type": "TILE",
+            "name": "Blood Torva",
+            "description": "Kill all of the awakened DT2 bosses once OR get 4 ring drops (gold/vestige)"
         },
         {
             "id": 86,
             "type": "TILE",
             "name": "Ancestral",
-            "description": "Obtain any Ancestral robe piece OR Twisted ancestral colour kit from COX. !!! NO MEGASCALES USING ALTS !!!"
+            "description": "Obtain any Ancestral robe piece OR 3 Twisted ancestral colour kits from COX. !!! NO MEGASCALES USING ALTS !!!"
         },
         {
             "id": 87,
@@ -542,8 +542,9 @@
         },
         {
             "id": 89,
-            "type": "RETURN",
-            "destination_id": 85
+            "type": "TILE",
+            "name": "Yama",
+            "description": "Gain 15 points in total with this as a guide:\n- Forfeit breath: 1 point\n- Divine severance: 1 point\n- Bloodied blows: 2 points\n- Glyphic attenuation: 3 points\n- Sensory clouding: 4 points"
         },
         {
             "id": 90,

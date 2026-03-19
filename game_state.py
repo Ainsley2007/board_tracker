@@ -1,3 +1,4 @@
+import os
 from util.logger import log
 import discord
 from board.board_detector import detect_tiles_by_bg
@@ -11,7 +12,7 @@ from services.member_service import fetch_team_members
 from services.team_service import fetch_teams
 from services.tiles_service import get_tile
 
-BOARD_PNG = "assets/board_state.png"
+BOARD_PNG = os.getenv("BOARD_PNG", "assets/board_state.png")
 
 
 async def update_game_board(bot: discord.Client) -> None:

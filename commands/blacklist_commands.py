@@ -11,6 +11,8 @@ from db.teams_table import (
 from game_state import update_game_board
 from services.tiles_service import get_tile
 
+_BLACKLIST_FORBIDDEN_TILES = frozenset([0, *range(80, 91)])
+
 
 async def blacklist_command(inter: discord.Interaction, tile_nr: int):
     await inter.response.defer(ephemeral=True)
@@ -103,8 +105,8 @@ def _validate_new_blacklist_tile(
 ) -> str | None:
     if get_tile(tile_nr) is None:
         return "Invalid tile number."
-    if tile_nr in (0, 90):
-        return "You cannot blacklist tile `0` or tile `90`."
+    if tile_nr in _BLACKLIST_FORBIDDEN_TILES:
+        return "You cannot blacklist tile `0` or any tile from `80` to `90` (final row)."
     if tile_nr <= team_position:
         return (
             f"Tile must be after your current team position (`{team_position}`)."

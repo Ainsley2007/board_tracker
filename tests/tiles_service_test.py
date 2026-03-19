@@ -39,10 +39,9 @@ def test_all_tiles_returns_the_same_dict():
 
 
 def test_get_tiles_by_type_return():
-    # There are exactly four RETURN tiles in the sample JSON
     returns = tiles.get_tiles_by_type("RETURN")
     ids = {t["id"] for t in returns}
-    assert ids == {24, 46, 72, 89}
+    assert ids == {24, 46, 72}
     assert all(t["type"] == "RETURN" for t in returns)
 
 
