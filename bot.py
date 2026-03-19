@@ -11,6 +11,8 @@ from commands.tile_info_command import info_command
 from commands.blacklist_commands import blacklist_command, change_blacklist_command
 from config import DISCORD_TOKEN
 from db.meta_table import get_channel_ids, set_meta
+from commands.race_control import start_tile_race_command
+from commands.race_gate import ensure_tile_race_live
 from commands.game_commands import (
     complete_command,
     post_pet_proof_command,
@@ -80,8 +82,18 @@ async def remove_member_cmd(
     return await remove_member_command(inter, user, team)
 
 
+@cmds.command(
+    name="start-tile-race",
+    description="Start the tile race (enables game commands for teams)",
+)
+async def start_tile_race_cmd(inter: discord.Interaction):
+    return await start_tile_race_command(inter)
+
+
 @cmds.command(name="roll", description="Roll the dice for your team")
 async def roll_cmd(inter: discord.Interaction):
+    if not await ensure_tile_race_live(inter):
+        return
     return await roll_dice_command(inter)
 
 
@@ -96,6 +108,8 @@ async def info_cmd(inter: discord.Interaction, tile_nr: int = None):
 @cmds.command(name="post", description="Upload a screenshot for the current tile")
 @app_commands.describe(proof="Image that shows your progress")
 async def post_cmd(inter: discord.Interaction, proof: discord.Attachment):
+    if not await ensure_tile_race_live(inter):
+        return
     return await post_command(inter, proof)
 
 
@@ -107,22 +121,30 @@ async def post_pet_proof_cmd(
         inter: discord.Interaction,
         proof: discord.Attachment,
 ):
+    if not await ensure_tile_race_live(inter):
+        return
     return await post_pet_proof_command(inter, proof)
 
 
 @cmds.command(name="complete", description="Complete the current tile for your team")
 async def complete_cmd(inter: discord.Interaction):
+    if not await ensure_tile_race_live(inter):
+        return
     return await complete_command(inter)
 
 
 @cmds.command(name="current-proofs", description="Get proofs of the current tile for your team")
 async def proofs_cmd(inter: discord.Interaction):
+    if not await ensure_tile_race_live(inter):
+        return
     return await proofs_command(inter)
 
 
 @cmds.command(name="blacklist", description="Add a future tile to your team's blacklist")
 @app_commands.describe(tile_nr="Tile number to blacklist")
 async def blacklist_cmd(inter: discord.Interaction, tile_nr: int):
+    if not await ensure_tile_race_live(inter):
+        return
     return await blacklist_command(inter, tile_nr)
 
 
@@ -136,6 +158,8 @@ async def change_blacklist_cmd(
         old_tile_nr: int,
         new_tile_nr: int,
 ):
+    if not await ensure_tile_race_live(inter):
+        return
     return await change_blacklist_command(inter, old_tile_nr, new_tile_nr)
 
 

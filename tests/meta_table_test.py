@@ -7,6 +7,8 @@ from db.meta_table import (
     get_board_channel_id,
     set_board_message_id,
     get_board_message_id,
+    is_race_started,
+    set_race_started,
     CATEGORY_CHANNEL_ID,
     BOARD_CHANNEL_ID,
     PROOFS_CHANNEL_ID,
@@ -59,6 +61,14 @@ def test_get_channel_ids_populated():
         "proofs": 3000,
         "cmd": 4000,
     }
+
+
+def test_race_started_defaults_false_then_toggle():
+    assert is_race_started() is False
+    set_race_started(True)
+    assert is_race_started() is True
+    set_race_started(False)
+    assert is_race_started() is False
 
 
 def test_special_getters_and_setters():

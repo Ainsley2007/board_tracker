@@ -10,6 +10,7 @@ from db.teams_table import (
     consume_blacklist_charge,
     get_blacklist_charges,
     get_blacklist_tiles,
+    increment_return_blacklist_grant_if_allowed,
     replace_blacklist_tile,
     remove_team,
     get_team,
@@ -84,6 +85,14 @@ def test_blacklist_charge_flow():
     assert consume_blacklist_charge("echo") is None
     assert add_blacklist_charges("echo", 2) == 2
     assert get_blacklist_charges("echo") == 2
+
+
+def test_return_blacklist_grant_cap():
+    add_team("Fox", "fox", 11, Colour.orange())
+    assert increment_return_blacklist_grant_if_allowed("fox") == (2, True)
+    assert increment_return_blacklist_grant_if_allowed("fox") == (3, True)
+    assert increment_return_blacklist_grant_if_allowed("fox") == (3, False)
+    assert get_team("fox")["return_blacklist_grants"] == 2
 
 
 def test_clear_pending_on_nonexistent():

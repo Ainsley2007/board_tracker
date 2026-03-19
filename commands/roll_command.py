@@ -5,7 +5,7 @@ import discord
 
 from commands.common import get_member, get_team
 from db.rolls_table import log_roll
-from db.teams_table import add_blacklist_charges
+from db.teams_table import increment_return_blacklist_grant_if_allowed
 from db.teams_table import update_team_position
 from game_state import update_game_board
 from services.member_service import fetch_member
@@ -97,8 +97,13 @@ def _apply_return_tile_effect(tile, rolled_pos: int, team_id: str) -> tuple[int,
     dest = tile.get("destination_id")
     if dest is None:
         return rolled_pos, ""
-    charges = add_blacklist_charges(team_id, 1)
-    return dest, f" ⏮️ Returned to {dest}. +1 blacklist charge ({charges})."
+    charges, granted = increment_return_blacklist_grant_if_allowed(team_id)
+    if granted:
+        return dest, f" ⏮️ Returned to {dest}. +1 blacklist charge ({charges})."
+    return dest, (
+        f" ⏮️ Returned to {dest}. Goback charge cap reached "
+        f"(`{charges}` charges)."
+    )
 
 
 def _apply_blacklist_redirect(position: int, team_id: str) -> tuple[int, str]:

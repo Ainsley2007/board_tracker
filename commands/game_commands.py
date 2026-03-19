@@ -5,13 +5,15 @@ import discord
 
 from commands.common import get_member, get_team
 from db.meta_table import get_proofs_channel_id
-from db.pet_proofs_table import add_pet_proof
+from db.pet_proofs_table import add_pet_proof, count_pet_proofs_for_team
 from db.proofs_table import add_proof, list_proof_urls, list_proofs
 from db.teams_table import add_blacklist_charges
 from db.teams_table import clear_pending_flag
 from game_state import update_game_board
 from services.member_service import fetch_member
 from services.team_service import fetch_team_by_id
+
+PET_PROOF_BLACKLIST_CHARGE_CAP = 3
 
 
 async def post_command(inter: discord.Interaction, proof: discord.Attachment):
@@ -69,6 +71,13 @@ async def post_pet_proof_command(
             ephemeral=True,
         )
 
+    if count_pet_proofs_for_team(member.team_id) >= PET_PROOF_BLACKLIST_CHARGE_CAP:
+        return await inter.followup.send(
+            f"Your team already used all `{PET_PROOF_BLACKLIST_CHARGE_CAP}` "
+            "pet proof blacklist charges.",
+            ephemeral=True,
+        )
+
     add_pet_proof(
         team_id=member.team_id,
         url=proof.url,
@@ -81,6 +90,7 @@ async def post_pet_proof_command(
         team_id=team.team_id,
         proof_url=proof.url,
         submitter_id=inter.user.id,
+        blacklist_charges=charges,
     )
 
     return await inter.followup.send(
@@ -178,6 +188,7 @@ async def send_pet_proof_embed(
     team_id: str,
     proof_url: str,
     submitter_id: int,
+    blacklist_charges: int,
 ):
     proofs_channel_id = get_proofs_channel_id()
     channel = inter.guild.get_channel(proofs_channel_id)
@@ -191,14 +202,19 @@ async def send_pet_proof_embed(
     submitter = await inter.guild.fetch_member(submitter_id)
 
     embed = discord.Embed(
-        title=f"{team.name} — pet proof",
+        title="🐾 PET PROOF SUBMITTED 🐾",
         description=f"{role.mention if role else team.name}",
         colour=team.color,
         timestamp=datetime.now(),
     )
     embed.add_field(name="Submitted by", value=submitter.mention, inline=False)
+    embed.add_field(
+        name="Blacklist charges",
+        value=f"`{blacklist_charges}`",
+        inline=False,
+    )
     embed.set_image(url=proof_url)
-    embed.set_footer(text="OSRS Tile-Race pet proof")
+    embed.set_footer(text=f"{team.name} • OSRS Tile-Race pet proof")
     await channel.send(embed=embed)
 
 

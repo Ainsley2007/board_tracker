@@ -4,6 +4,7 @@ from db.client import db, Q
 
 teams_table = db.table("teams")
 DEFAULT_BLACKLIST_CHARGES = 1
+MAX_RETURN_BLACKLIST_GRANTS = 2
 
 
 def add_team(name: str, slug: str, role_id: int, role_colour: Colour):
@@ -87,6 +88,24 @@ def add_blacklist_charges(slug: str, amount: int = 1) -> int:
     charges = get_blacklist_charges(slug) + amount
     teams_table.update({"blacklist_charges": charges}, Q.slug == slug)
     return charges
+
+
+def increment_return_blacklist_grant_if_allowed(slug: str) -> tuple[int, bool]:
+    row = get_team(slug)
+    if row is None:
+        return 0, False
+    grants = int(row.get("return_blacklist_grants", 0))
+    if grants >= MAX_RETURN_BLACKLIST_GRANTS:
+        return get_blacklist_charges(slug), False
+    charges = get_blacklist_charges(slug) + 1
+    teams_table.update(
+        {
+            "blacklist_charges": charges,
+            "return_blacklist_grants": grants + 1,
+        },
+        Q.slug == slug,
+    )
+    return charges, True
 
 
 def consume_blacklist_charge(slug: str) -> int | None:

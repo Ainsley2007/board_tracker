@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-from db.client import db
+from db.client import Q, db
 
 
 pet_proofs_table = db.table("pet_proofs")
@@ -21,3 +21,7 @@ def add_pet_proof(
             "ts": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         }
     )
+
+
+def count_pet_proofs_for_team(team_id: str) -> int:
+    return len(pet_proofs_table.search(Q.team_id == team_id))
