@@ -4,7 +4,7 @@ from db.client import db, Q
 
 teams_table = db.table("teams")
 DEFAULT_BLACKLIST_CHARGES = 1
-MAX_RETURN_BLACKLIST_GRANTS = 2
+MAX_RETURN_BLACKLIST_GRANTS = 1
 
 
 def add_team(name: str, slug: str, role_id: int, role_colour: Colour):
