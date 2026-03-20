@@ -13,7 +13,7 @@ from game_state import update_game_board
 from services.member_service import fetch_member
 from services.team_service import fetch_team_by_id
 
-PET_PROOF_BLACKLIST_CHARGE_CAP = 3
+PET_PROOF_BLACKLIST_CHARGE_CAP = 1
 
 
 async def post_command(inter: discord.Interaction, proof: discord.Attachment):
